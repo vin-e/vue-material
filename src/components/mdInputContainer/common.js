@@ -1,10 +1,20 @@
 export default {
   props: {
     value: [String, Number, Date],
+    debounce: {
+      type: Number,
+      default: 3E2
+    },
     disabled: Boolean,
     required: Boolean,
     maxlength: [Number, String],
+    name: String,
     placeholder: String
+  },
+  data() {
+    return {
+      timeout: 0
+    };
   },
   watch: {
     value() {
@@ -27,6 +37,15 @@ export default {
     handleMaxLength() {
       this.parentContainer.enableCounter = this.maxlength > 0;
       this.parentContainer.counterLength = this.maxlength;
+    },
+    lazyEventEmitter() {
+      if (this.timeout) {
+        window.clearTimeout(this.timeout);
+      }
+      this.timeout = window.setTimeout(() => {
+        this.$emit('change', this.$el.value);
+        this.$emit('input', this.$el.value);
+      }, this.debounce);
     },
     setParentValue(value) {
       this.parentContainer.setValue(value || this.$el.value);
@@ -62,8 +81,12 @@ export default {
     },
     onInput($event) {
       this.updateValues();
+<<<<<<< HEAD
       this.$emit('change', this.$el.value, $event);
       this.$emit($event.type, this.$el.value, $event);
+=======
+      this.lazyEventEmitter();
+>>>>>>> develop
     }
   }
 };
