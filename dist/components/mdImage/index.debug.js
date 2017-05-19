@@ -73,43 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 385);
+/******/ 	return __webpack_require__(__webpack_require__.s = 384);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -167,81 +136,32 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 10:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {var getImageLightness = function getImageLightness(image, onLoad, onError) {
-  var canvas = document.createElement('canvas');
-
-  image.crossOrigin = 'Anonymous';
-
-  image.onload = function () {
-    var colorSum = 0;
-    var ctx = void 0;
-    var imageData = void 0;
-    var imageMetadata = void 0;
-    var r = void 0;
-    var g = void 0;
-    var b = void 0;
-    var average = void 0;
-
-    canvas.width = this.width;
-    canvas.height = this.height;
-    ctx = canvas.getContext('2d');
-
-    ctx.drawImage(this, 0, 0);
-
-    imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    imageMetadata = imageData.data;
-
-    for (var x = 0, len = imageMetadata.length; x < len; x += 4) {
-      r = imageMetadata[x];
-      g = imageMetadata[x + 1];
-      b = imageMetadata[x + 2];
-
-      average = Math.floor((r + g + b) / 3);
-      colorSum += average;
-    }
-
-    onLoad(Math.floor(colorSum / (this.width * this.height)));
-  };
-
-  image.onerror = onError;
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (getImageLightness);
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
-
-/***/ }),
-
-/***/ 170:
+/***/ 169:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 208:
+/***/ 207:
 /***/ (function(module, exports) {
 
 module.exports = ""
 
 /***/ }),
 
-/***/ 256:
+/***/ 255:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(170)
+__webpack_require__(169)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(83),
+  __webpack_require__(82),
   /* template */
-  __webpack_require__(323),
+  __webpack_require__(322),
   /* scopeId */
   null,
   /* cssModules */
@@ -269,14 +189,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 32:
+/***/ 31:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdImage_vue__ = __webpack_require__(256);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdImage_vue__ = __webpack_require__(255);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdImage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdImage_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdImage_theme__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdImage_theme__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdImage_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdImage_theme__);
 /* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
@@ -287,12 +207,10 @@ function install(Vue) {
 
   Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdImage_theme___default.a);
 }
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 323:
+/***/ 322:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -314,20 +232,20 @@ if (false) {
 
 /***/ }),
 
-/***/ 385:
+/***/ 384:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(32);
+module.exports = __webpack_require__(31);
 
 
 /***/ }),
 
-/***/ 83:
+/***/ 82:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_utils_getImageLightness__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_utils_getImageLightness__ = __webpack_require__(9);
 //
 //
 //
@@ -394,6 +312,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.createImage();
   }
 });
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var getImageLightness = function getImageLightness(image, onLoad, onError) {
+  var canvas = document.createElement('canvas');
+
+  image.crossOrigin = 'Anonymous';
+
+  image.onload = function () {
+    var colorSum = 0;
+    var ctx = void 0;
+    var imageData = void 0;
+    var imageMetadata = void 0;
+    var r = void 0;
+    var g = void 0;
+    var b = void 0;
+    var average = void 0;
+
+    canvas.width = this.width;
+    canvas.height = this.height;
+    ctx = canvas.getContext('2d');
+
+    ctx.drawImage(this, 0, 0);
+
+    imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    imageMetadata = imageData.data;
+
+    for (var x = 0, len = imageMetadata.length; x < len; x += 4) {
+      r = imageMetadata[x];
+      g = imageMetadata[x + 1];
+      b = imageMetadata[x + 2];
+
+      average = Math.floor((r + g + b) / 3);
+      colorSum += average;
+    }
+
+    onLoad(Math.floor(colorSum / (this.width * this.height)));
+  };
+
+  image.onerror = onError;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (getImageLightness);
 
 /***/ })
 

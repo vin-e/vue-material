@@ -73,43 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 396);
+/******/ 	return __webpack_require__(__webpack_require__.s = 395);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -167,12 +136,62 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 105:
+/***/ 1:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// Theme mixin
+
+// Grab the closest ancestor component's `md-theme` attribute OR grab the
+// `md-name` attribute from an `<md-theme>` component.
+function getAncestorThemeName(component) {
+  if (!component) {
+    return null;
+  }
+
+  var name = component.mdTheme;
+
+  if (!name && component.$options._componentTag === 'md-theme') {
+    name = component.mdName;
+  }
+
+  return name || getAncestorThemeName(component.$parent);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    mdTheme: String
+  },
+  computed: {
+    mdEffectiveTheme: function mdEffectiveTheme() {
+      return getAncestorThemeName(this) || this.$material.currentTheme;
+    },
+    themeClass: function themeClass() {
+      return this.$material.prefix + this.mdEffectiveTheme;
+    }
+  },
+  watch: {
+    mdTheme: function mdTheme(value) {
+      this.$material.useTheme(value);
+    }
+  },
+  beforeMount: function beforeMount() {
+    var localTheme = this.mdTheme;
+
+    if (localTheme) {
+      this.$material.useTheme(localTheme);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 104:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(1);
 //
 //
 //
@@ -238,84 +257,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 167:
+/***/ 166:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {// Theme mixin
-
-// Grab the closest ancestor component's `md-theme` attribute OR grab the
-// `md-name` attribute from an `<md-theme>` component.
-function getAncestorThemeName(component) {
-  if (!component) {
-    return null;
-  }
-
-  var name = component.mdTheme;
-
-  if (!name && component.$options._componentTag === 'md-theme') {
-    name = component.mdName;
-  }
-
-  return name || getAncestorThemeName(component.$parent);
-}
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  props: {
-    mdTheme: String
-  },
-  computed: {
-    mdEffectiveTheme: function mdEffectiveTheme() {
-      return getAncestorThemeName(this) || this.$material.currentTheme;
-    },
-    themeClass: function themeClass() {
-      return this.$material.prefix + this.mdEffectiveTheme;
-    }
-  },
-  watch: {
-    mdTheme: function mdTheme(value) {
-      this.$material.useTheme(value);
-    }
-  },
-  beforeMount: function beforeMount() {
-    var localTheme = this.mdTheme;
-
-    if (localTheme) {
-      this.$material.useTheme(localTheme);
-    }
-  }
-});
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
-
-/***/ }),
-
-/***/ 218:
+/***/ 217:
 /***/ (function(module, exports) {
 
 module.exports = ".THEME_NAME.md-spinner .md-spinner-path {\n  stroke: PRIMARY-COLOR; }\n\n.THEME_NAME.md-spinner.md-accent .md-spinner-path {\n  stroke: ACCENT-COLOR; }\n\n.THEME_NAME.md-spinner.md-warn .md-spinner-path {\n  stroke: WARN-COLOR; }\n"
 
 /***/ }),
 
-/***/ 278:
+/***/ 277:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(167)
+__webpack_require__(166)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(105),
+  __webpack_require__(104),
   /* template */
-  __webpack_require__(311),
+  __webpack_require__(310),
   /* scopeId */
   null,
   /* cssModules */
@@ -343,7 +310,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 311:
+/***/ 310:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -382,22 +349,22 @@ if (false) {
 
 /***/ }),
 
-/***/ 396:
+/***/ 395:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(43);
+module.exports = __webpack_require__(42);
 
 
 /***/ }),
 
-/***/ 43:
+/***/ 42:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdSpinner_vue__ = __webpack_require__(278);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdSpinner_vue__ = __webpack_require__(277);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdSpinner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdSpinner_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdSpinner_theme__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdSpinner_theme__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdSpinner_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdSpinner_theme__);
 /* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
@@ -408,8 +375,6 @@ function install(Vue) {
 
   Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdSpinner_theme___default.a);
 }
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ })
 

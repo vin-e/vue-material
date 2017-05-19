@@ -73,43 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 374);
+/******/ 	return __webpack_require__(__webpack_require__.s = 373);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -167,25 +136,11 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 177:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 198:
-/***/ (function(module, exports) {
-
-module.exports = ".THEME_NAME.md-bottom-bar.md-fixed {\n  background-color: BACKGROUND-COLOR; }\n  .THEME_NAME.md-bottom-bar.md-fixed .md-bottom-bar-item {\n    color: BACKGROUND-CONTRAST-0.54; }\n    .THEME_NAME.md-bottom-bar.md-fixed .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n      color: BACKGROUND-CONTRAST-0.87; }\n    .THEME_NAME.md-bottom-bar.md-fixed .md-bottom-bar-item.md-active {\n      color: PRIMARY-COLOR; }\n  .THEME_NAME.md-bottom-bar.md-fixed.md-accent .md-bottom-bar-item.md-active {\n    color: ACCENT-COLOR; }\n  .THEME_NAME.md-bottom-bar.md-fixed.md-warn .md-bottom-bar-item.md-active {\n    color: WARN-COLOR; }\n  .THEME_NAME.md-bottom-bar.md-fixed.md-transparent .md-bottom-bar-item.md-active {\n    color: BACKGROUND-CONTRAST; }\n\n.THEME_NAME.md-bottom-bar.md-shift {\n  background-color: PRIMARY-COLOR;\n  color: PRIMARY-CONTRAST; }\n  .THEME_NAME.md-bottom-bar.md-shift .md-bottom-bar-item {\n    color: PRIMARY-CONTRAST-0.54; }\n    .THEME_NAME.md-bottom-bar.md-shift .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n      color: PRIMARY-CONTRAST-0.87; }\n    .THEME_NAME.md-bottom-bar.md-shift .md-bottom-bar-item.md-active {\n      color: PRIMARY-CONTRAST; }\n  .THEME_NAME.md-bottom-bar.md-shift.md-accent {\n    background-color: ACCENT-COLOR; }\n    .THEME_NAME.md-bottom-bar.md-shift.md-accent .md-bottom-bar-item {\n      color: ACCENT-CONTRAST-0.54; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-accent .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n        color: ACCENT-CONTRAST-0.87; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-accent .md-bottom-bar-item.md-active {\n        color: ACCENT-CONTRAST; }\n  .THEME_NAME.md-bottom-bar.md-shift.md-warn {\n    background-color: WARN-COLOR; }\n    .THEME_NAME.md-bottom-bar.md-shift.md-warn .md-bottom-bar-item {\n      color: WARN-CONTRAST-0.54; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-warn .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n        color: WARN-CONTRAST-0.87; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-warn .md-bottom-bar-item.md-active {\n        color: WARN-CONTRAST; }\n  .THEME_NAME.md-bottom-bar.md-shift.md-transparent {\n    background-color: transparent; }\n    .THEME_NAME.md-bottom-bar.md-shift.md-transparent .md-bottom-bar-item {\n      color: BACKGROUND-CONTRAST-0.54; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-transparent .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n        color: BACKGROUND-CONTRAST-0.87; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-transparent .md-bottom-bar-item.md-active {\n        color: BACKGROUND-CONTRAST; }\n"
-
-/***/ }),
-
-/***/ 2:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {// Theme mixin
+// Theme mixin
 
 // Grab the closest ancestor component's `md-theme` attribute OR grab the
 // `md-name` attribute from an `<md-theme>` component.
@@ -228,21 +183,33 @@ function getAncestorThemeName(component) {
     }
   }
 });
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 21:
+/***/ 176:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 197:
+/***/ (function(module, exports) {
+
+module.exports = ".THEME_NAME.md-bottom-bar.md-fixed {\n  background-color: BACKGROUND-COLOR; }\n  .THEME_NAME.md-bottom-bar.md-fixed .md-bottom-bar-item {\n    color: BACKGROUND-CONTRAST-0.54; }\n    .THEME_NAME.md-bottom-bar.md-fixed .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n      color: BACKGROUND-CONTRAST-0.87; }\n    .THEME_NAME.md-bottom-bar.md-fixed .md-bottom-bar-item.md-active {\n      color: PRIMARY-COLOR; }\n  .THEME_NAME.md-bottom-bar.md-fixed.md-accent .md-bottom-bar-item.md-active {\n    color: ACCENT-COLOR; }\n  .THEME_NAME.md-bottom-bar.md-fixed.md-warn .md-bottom-bar-item.md-active {\n    color: WARN-COLOR; }\n  .THEME_NAME.md-bottom-bar.md-fixed.md-transparent .md-bottom-bar-item.md-active {\n    color: BACKGROUND-CONTRAST; }\n\n.THEME_NAME.md-bottom-bar.md-shift {\n  background-color: PRIMARY-COLOR;\n  color: PRIMARY-CONTRAST; }\n  .THEME_NAME.md-bottom-bar.md-shift .md-bottom-bar-item {\n    color: PRIMARY-CONTRAST-0.54; }\n    .THEME_NAME.md-bottom-bar.md-shift .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n      color: PRIMARY-CONTRAST-0.87; }\n    .THEME_NAME.md-bottom-bar.md-shift .md-bottom-bar-item.md-active {\n      color: PRIMARY-CONTRAST; }\n  .THEME_NAME.md-bottom-bar.md-shift.md-accent {\n    background-color: ACCENT-COLOR; }\n    .THEME_NAME.md-bottom-bar.md-shift.md-accent .md-bottom-bar-item {\n      color: ACCENT-CONTRAST-0.54; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-accent .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n        color: ACCENT-CONTRAST-0.87; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-accent .md-bottom-bar-item.md-active {\n        color: ACCENT-CONTRAST; }\n  .THEME_NAME.md-bottom-bar.md-shift.md-warn {\n    background-color: WARN-COLOR; }\n    .THEME_NAME.md-bottom-bar.md-shift.md-warn .md-bottom-bar-item {\n      color: WARN-CONTRAST-0.54; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-warn .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n        color: WARN-CONTRAST-0.87; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-warn .md-bottom-bar-item.md-active {\n        color: WARN-CONTRAST; }\n  .THEME_NAME.md-bottom-bar.md-shift.md-transparent {\n    background-color: transparent; }\n    .THEME_NAME.md-bottom-bar.md-shift.md-transparent .md-bottom-bar-item {\n      color: BACKGROUND-CONTRAST-0.54; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-transparent .md-bottom-bar-item:hover:not([disabled]):not(.md-active) {\n        color: BACKGROUND-CONTRAST-0.87; }\n      .THEME_NAME.md-bottom-bar.md-shift.md-transparent .md-bottom-bar-item.md-active {\n        color: BACKGROUND-CONTRAST; }\n"
+
+/***/ }),
+
+/***/ 20:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdBottomBar_vue__ = __webpack_require__(228);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdBottomBar_vue__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdBottomBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdBottomBar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdBottomBarItem_vue__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdBottomBarItem_vue__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdBottomBarItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdBottomBarItem_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdBottomBar_theme__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdBottomBar_theme__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdBottomBar_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mdBottomBar_theme__);
 /* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
@@ -255,23 +222,21 @@ function install(Vue) {
 
   Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_2__mdBottomBar_theme___default.a);
 }
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 228:
+/***/ 227:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(177)
+__webpack_require__(176)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(55),
+  __webpack_require__(54),
   /* template */
-  __webpack_require__(335),
+  __webpack_require__(334),
   /* scopeId */
   null,
   /* cssModules */
@@ -299,14 +264,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 229:
+/***/ 228:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(56),
+  __webpack_require__(55),
   /* template */
-  __webpack_require__(313),
+  __webpack_require__(312),
   /* scopeId */
   null,
   /* cssModules */
@@ -334,7 +299,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 313:
+/***/ 312:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -392,7 +357,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 335:
+/***/ 334:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -411,20 +376,20 @@ if (false) {
 
 /***/ }),
 
-/***/ 374:
+/***/ 373:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(21);
+module.exports = __webpack_require__(20);
 
 
 /***/ }),
 
-/***/ 55:
+/***/ 54:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(1);
 //
 //
 //
@@ -460,7 +425,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 56:
+/***/ 55:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

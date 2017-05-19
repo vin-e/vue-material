@@ -73,43 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 372);
+/******/ 	return __webpack_require__(__webpack_require__.s = 371);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -167,48 +136,11 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 173:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 19:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdAvatar_vue__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdAvatar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdAvatar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdAvatar_theme__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdAvatar_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdAvatar_theme__);
-/* harmony export (immutable) */ __webpack_exports__["default"] = install;
-
-
-
-function install(Vue) {
-  Vue.component('md-avatar', __WEBPACK_IMPORTED_MODULE_0__mdAvatar_vue___default.a);
-
-  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdAvatar_theme___default.a);
-}
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
-
-/***/ }),
-
-/***/ 197:
-/***/ (function(module, exports) {
-
-module.exports = ".THEME_NAME.md-avatar.md-primary.md-avatar-icon {\n  background-color: PRIMARY-COLOR; }\n  .THEME_NAME.md-avatar.md-primary.md-avatar-icon .md-icon {\n    color: PRIMARY-CONTRAST-0.99999; }\n\n.THEME_NAME.md-avatar.md-accent.md-avatar-icon {\n  background-color: ACCENT-COLOR; }\n  .THEME_NAME.md-avatar.md-accent.md-avatar-icon .md-icon {\n    color: ACCENT-CONTRAST-0.99999; }\n\n.THEME_NAME.md-avatar.md-warn.md-avatar-icon {\n  background-color: WARN-COLOR; }\n  .THEME_NAME.md-avatar.md-warn.md-avatar-icon .md-icon {\n    color: WARN-CONTRAST-0.99999; }\n"
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {// Theme mixin
+// Theme mixin
 
 // Grab the closest ancestor component's `md-theme` attribute OR grab the
 // `md-name` attribute from an `<md-theme>` component.
@@ -251,23 +183,56 @@ function getAncestorThemeName(component) {
     }
   }
 });
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 226:
+/***/ 172:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 18:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdAvatar_vue__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdAvatar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdAvatar_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdAvatar_theme__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdAvatar_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdAvatar_theme__);
+/* harmony export (immutable) */ __webpack_exports__["default"] = install;
+
+
+
+function install(Vue) {
+  Vue.component('md-avatar', __WEBPACK_IMPORTED_MODULE_0__mdAvatar_vue___default.a);
+
+  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdAvatar_theme___default.a);
+}
+
+/***/ }),
+
+/***/ 196:
+/***/ (function(module, exports) {
+
+module.exports = ".THEME_NAME.md-avatar.md-primary.md-avatar-icon {\n  background-color: PRIMARY-COLOR; }\n  .THEME_NAME.md-avatar.md-primary.md-avatar-icon .md-icon {\n    color: PRIMARY-CONTRAST-0.99999; }\n\n.THEME_NAME.md-avatar.md-accent.md-avatar-icon {\n  background-color: ACCENT-COLOR; }\n  .THEME_NAME.md-avatar.md-accent.md-avatar-icon .md-icon {\n    color: ACCENT-CONTRAST-0.99999; }\n\n.THEME_NAME.md-avatar.md-warn.md-avatar-icon {\n  background-color: WARN-COLOR; }\n  .THEME_NAME.md-avatar.md-warn.md-avatar-icon .md-icon {\n    color: WARN-CONTRAST-0.99999; }\n"
+
+/***/ }),
+
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(173)
+__webpack_require__(172)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(53),
+  __webpack_require__(52),
   /* template */
-  __webpack_require__(327),
+  __webpack_require__(326),
   /* scopeId */
   null,
   /* cssModules */
@@ -295,7 +260,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 327:
+/***/ 326:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -314,20 +279,20 @@ if (false) {
 
 /***/ }),
 
-/***/ 372:
+/***/ 371:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(19);
+module.exports = __webpack_require__(18);
 
 
 /***/ }),
 
-/***/ 53:
+/***/ 52:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(1);
 //
 //
 //

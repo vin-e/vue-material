@@ -73,43 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 377);
+/******/ 	return __webpack_require__(__webpack_require__.s = 376);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -167,67 +136,11 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 10:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {var getImageLightness = function getImageLightness(image, onLoad, onError) {
-  var canvas = document.createElement('canvas');
-
-  image.crossOrigin = 'Anonymous';
-
-  image.onload = function () {
-    var colorSum = 0;
-    var ctx = void 0;
-    var imageData = void 0;
-    var imageMetadata = void 0;
-    var r = void 0;
-    var g = void 0;
-    var b = void 0;
-    var average = void 0;
-
-    canvas.width = this.width;
-    canvas.height = this.height;
-    ctx = canvas.getContext('2d');
-
-    ctx.drawImage(this, 0, 0);
-
-    imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    imageMetadata = imageData.data;
-
-    for (var x = 0, len = imageMetadata.length; x < len; x += 4) {
-      r = imageMetadata[x];
-      g = imageMetadata[x + 1];
-      b = imageMetadata[x + 2];
-
-      average = Math.floor((r + g + b) / 3);
-      colorSum += average;
-    }
-
-    onLoad(Math.floor(colorSum / (this.width * this.height)));
-  };
-
-  image.onerror = onError;
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (getImageLightness);
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
-
-/***/ }),
-
-/***/ 176:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {// Theme mixin
+// Theme mixin
 
 // Grab the closest ancestor component's `md-theme` attribute OR grab the
 // `md-name` attribute from an `<md-theme>` component.
@@ -270,328 +183,49 @@ function getAncestorThemeName(component) {
     }
   }
 });
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 201:
+/***/ 175:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 200:
 /***/ (function(module, exports) {
 
 module.exports = ".THEME_NAME.md-card {\n  background-color: BACKGROUND-COLOR; }\n  .THEME_NAME.md-card.md-primary {\n    background-color: PRIMARY-COLOR;\n    color: PRIMARY-CONTRAST; }\n    .THEME_NAME.md-card.md-primary .md-card-header .md-icon-button:not(.md-primary):not(.md-warn):not(.md-accent) .md-icon,\n    .THEME_NAME.md-card.md-primary .md-card-actions .md-icon-button:not(.md-primary):not(.md-warn):not(.md-accent) .md-icon {\n      color: PRIMARY-CONTRAST-0.87; }\n    .THEME_NAME.md-card.md-primary .md-input-container.md-input-focused input,\n    .THEME_NAME.md-card.md-primary .md-input-container.md-input-focused textarea {\n      color: PRIMARY-CONTRAST;\n      text-shadow: 0 0 0 PRIMARY-CONTRAST; }\n    .THEME_NAME.md-card.md-primary .md-input-container.md-input-focused label,\n    .THEME_NAME.md-card.md-primary .md-input-container.md-input-focused .md-icon:not(.md-icon-delete) {\n      color: PRIMARY-CONTRAST; }\n    .THEME_NAME.md-card.md-primary .md-input-container:after {\n      background-color: PRIMARY-CONTRAST; }\n    .THEME_NAME.md-card.md-primary .md-input-container input,\n    .THEME_NAME.md-card.md-primary .md-input-container textarea {\n      color: PRIMARY-CONTRAST;\n      text-shadow: 0 0 0 PRIMARY-CONTRAST; }\n      .THEME_NAME.md-card.md-primary .md-input-container input::-webkit-input-placeholder,\n      .THEME_NAME.md-card.md-primary .md-input-container textarea::-webkit-input-placeholder {\n        color: PRIMARY-CONTRAST-0.54; }\n    .THEME_NAME.md-card.md-primary .md-input-container label,\n    .THEME_NAME.md-card.md-primary .md-input-container .md-icon:not(.md-icon-delete) {\n      color: PRIMARY-CONTRAST; }\n  .THEME_NAME.md-card.md-accent {\n    background-color: ACCENT-COLOR;\n    color: ACCENT-CONTRAST; }\n    .THEME_NAME.md-card.md-accent .md-card-header .md-icon-button:not(.md-primary):not(.md-warn):not(.md-accent) .md-icon,\n    .THEME_NAME.md-card.md-accent .md-card-actions .md-icon-button:not(.md-primary):not(.md-warn):not(.md-accent) .md-icon {\n      color: ACCENT-CONTRAST-0.87; }\n    .THEME_NAME.md-card.md-accent .md-input-container.md-input-focused input,\n    .THEME_NAME.md-card.md-accent .md-input-container.md-input-focused textarea {\n      color: ACCENT-CONTRAST;\n      text-shadow: 0 0 0 ACCENT-CONTRAST; }\n    .THEME_NAME.md-card.md-accent .md-input-container.md-input-focused label,\n    .THEME_NAME.md-card.md-accent .md-input-container.md-input-focused .md-icon:not(.md-icon-delete) {\n      color: ACCENT-CONTRAST; }\n    .THEME_NAME.md-card.md-accent .md-input-container:after {\n      background-color: ACCENT-CONTRAST; }\n    .THEME_NAME.md-card.md-accent .md-input-container input,\n    .THEME_NAME.md-card.md-accent .md-input-container textarea {\n      color: ACCENT-CONTRAST;\n      text-shadow: 0 0 0 ACCENT-CONTRAST; }\n      .THEME_NAME.md-card.md-accent .md-input-container input::-webkit-input-placeholder,\n      .THEME_NAME.md-card.md-accent .md-input-container textarea::-webkit-input-placeholder {\n        color: ACCENT-CONTRAST-0.54; }\n    .THEME_NAME.md-card.md-accent .md-input-container label,\n    .THEME_NAME.md-card.md-accent .md-input-container .md-icon:not(.md-icon-delete) {\n      color: ACCENT-CONTRAST; }\n  .THEME_NAME.md-card.md-warn {\n    background-color: WARN-COLOR;\n    color: WARN-CONTRAST; }\n    .THEME_NAME.md-card.md-warn .md-card-header .md-icon-button:not(.md-primary):not(.md-warn):not(.md-accent) .md-icon,\n    .THEME_NAME.md-card.md-warn .md-card-actions .md-icon-button:not(.md-primary):not(.md-warn):not(.md-accent) .md-icon {\n      color: WARN-CONTRAST-0.87; }\n    .THEME_NAME.md-card.md-warn .md-input-container.md-input-focused input,\n    .THEME_NAME.md-card.md-warn .md-input-container.md-input-focused textarea {\n      color: WARN-CONTRAST;\n      text-shadow: 0 0 0 WARN-CONTRAST; }\n    .THEME_NAME.md-card.md-warn .md-input-container.md-input-focused label,\n    .THEME_NAME.md-card.md-warn .md-input-container.md-input-focused .md-icon:not(.md-icon-delete) {\n      color: WARN-CONTRAST; }\n    .THEME_NAME.md-card.md-warn .md-input-container:after {\n      background-color: WARN-CONTRAST; }\n    .THEME_NAME.md-card.md-warn .md-input-container input,\n    .THEME_NAME.md-card.md-warn .md-input-container textarea {\n      color: WARN-CONTRAST;\n      text-shadow: 0 0 0 WARN-CONTRAST; }\n      .THEME_NAME.md-card.md-warn .md-input-container input::-webkit-input-placeholder,\n      .THEME_NAME.md-card.md-warn .md-input-container textarea::-webkit-input-placeholder {\n        color: WARN-CONTRAST-0.54; }\n    .THEME_NAME.md-card.md-warn .md-input-container label,\n    .THEME_NAME.md-card.md-warn .md-input-container .md-icon:not(.md-icon-delete) {\n      color: WARN-CONTRAST; }\n  .THEME_NAME.md-card .md-card-header .md-icon-button:not(.md-primary):not(.md-warn):not(.md-accent) .md-icon,\n  .THEME_NAME.md-card .md-card-actions .md-icon-button:not(.md-primary):not(.md-warn):not(.md-accent) .md-icon {\n    color: BACKGROUND-CONTRAST-0.54; }\n  .THEME_NAME.md-card > .md-card-area:after {\n    background-color: BACKGROUND-CONTRAST-0.12; }\n  .THEME_NAME.md-card .md-card-media-cover.md-text-scrim .md-backdrop {\n    background: linear-gradient(to bottom, BACKGROUND-CONTRAST-0.0 20%, BACKGROUND-CONTRAST-0.275 66%, BACKGROUND-CONTRAST-0.55 100%); }\n  .THEME_NAME.md-card .md-card-media-cover.md-solid .md-card-area {\n    background-color: BACKGROUND-CONTRAST-0.4; }\n  .THEME_NAME.md-card .md-card-expand .md-card-actions {\n    background-color: BACKGROUND-COLOR; }\n"
 
 /***/ }),
 
-/***/ 232:
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(176)
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(59),
-  /* template */
-  __webpack_require__(332),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCard.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdCard.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4f5000dd", Component.options)
-  } else {
-    hotAPI.reload("data-v-4f5000dd", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 233:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(60),
-  /* template */
-  __webpack_require__(315),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardActions.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdCardActions.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2ccde710", Component.options)
-  } else {
-    hotAPI.reload("data-v-2ccde710", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 234:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(61),
-  /* template */
-  __webpack_require__(305),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardArea.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdCardArea.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0baf06ec", Component.options)
-  } else {
-    hotAPI.reload("data-v-0baf06ec", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 235:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(62),
-  /* template */
-  __webpack_require__(347),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardContent.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdCardContent.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-93aa96e8", Component.options)
-  } else {
-    hotAPI.reload("data-v-93aa96e8", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 236:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(63),
-  /* template */
-  __webpack_require__(322),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardExpand.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdCardExpand.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3f8156d7", Component.options)
-  } else {
-    hotAPI.reload("data-v-3f8156d7", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 237:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(64),
-  /* template */
-  __webpack_require__(359),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardHeader.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdCardHeader.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d597ad6c", Component.options)
-  } else {
-    hotAPI.reload("data-v-d597ad6c", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 238:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(65),
-  /* template */
-  __webpack_require__(307),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardHeaderText.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdCardHeaderText.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f35cb17", Component.options)
-  } else {
-    hotAPI.reload("data-v-0f35cb17", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 239:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(66),
-  /* template */
-  __webpack_require__(333),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardMedia.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdCardMedia.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-59c8f592", Component.options)
-  } else {
-    hotAPI.reload("data-v-59c8f592", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 24:
+/***/ 23:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdCard_vue__ = __webpack_require__(232);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdCard_vue__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdCard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdCard_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdCardMedia_vue__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdCardMedia_vue__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdCardMedia_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdCardMedia_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdCardMediaCover_vue__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdCardMediaCover_vue__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdCardMediaCover_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mdCardMediaCover_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mdCardMediaActions_vue__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mdCardMediaActions_vue__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mdCardMediaActions_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__mdCardMediaActions_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mdCardHeader_vue__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mdCardHeader_vue__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mdCardHeader_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__mdCardHeader_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mdCardHeaderText_vue__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mdCardHeaderText_vue__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mdCardHeaderText_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__mdCardHeaderText_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__mdCardContent_vue__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__mdCardContent_vue__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__mdCardContent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__mdCardContent_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__mdCardActions_vue__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__mdCardActions_vue__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__mdCardActions_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__mdCardActions_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__mdCardArea_vue__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__mdCardArea_vue__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__mdCardArea_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__mdCardArea_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__mdCardExpand_vue__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__mdCardExpand_vue__ = __webpack_require__(235);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__mdCardExpand_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__mdCardExpand_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mdCard_theme__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mdCard_theme__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mdCard_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__mdCard_theme__);
 /* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
@@ -620,19 +254,301 @@ function install(Vue) {
 
   Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_10__mdCard_theme___default.a);
 }
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 240:
+/***/ 231:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+
+/* styles */
+__webpack_require__(175)
+
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(67),
+  __webpack_require__(58),
   /* template */
-  __webpack_require__(345),
+  __webpack_require__(331),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCard.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdCard.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4f5000dd", Component.options)
+  } else {
+    hotAPI.reload("data-v-4f5000dd", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 232:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(59),
+  /* template */
+  __webpack_require__(314),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardActions.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdCardActions.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2ccde710", Component.options)
+  } else {
+    hotAPI.reload("data-v-2ccde710", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 233:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(60),
+  /* template */
+  __webpack_require__(304),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardArea.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdCardArea.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0baf06ec", Component.options)
+  } else {
+    hotAPI.reload("data-v-0baf06ec", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 234:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(61),
+  /* template */
+  __webpack_require__(346),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardContent.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdCardContent.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-93aa96e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-93aa96e8", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 235:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(62),
+  /* template */
+  __webpack_require__(321),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardExpand.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdCardExpand.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3f8156d7", Component.options)
+  } else {
+    hotAPI.reload("data-v-3f8156d7", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 236:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(63),
+  /* template */
+  __webpack_require__(358),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardHeader.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdCardHeader.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d597ad6c", Component.options)
+  } else {
+    hotAPI.reload("data-v-d597ad6c", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 237:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(64),
+  /* template */
+  __webpack_require__(306),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardHeaderText.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdCardHeaderText.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0f35cb17", Component.options)
+  } else {
+    hotAPI.reload("data-v-0f35cb17", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 238:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(65),
+  /* template */
+  __webpack_require__(332),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdCard\\mdCardMedia.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdCardMedia.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-59c8f592", Component.options)
+  } else {
+    hotAPI.reload("data-v-59c8f592", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 239:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(66),
+  /* template */
+  __webpack_require__(344),
   /* scopeId */
   null,
   /* cssModules */
@@ -660,14 +576,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 241:
+/***/ 240:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(68),
+  __webpack_require__(67),
   /* template */
-  __webpack_require__(342),
+  __webpack_require__(341),
   /* scopeId */
   null,
   /* cssModules */
@@ -695,7 +611,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 305:
+/***/ 304:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -714,7 +630,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 307:
+/***/ 306:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -732,7 +648,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 315:
+/***/ 314:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -750,7 +666,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 322:
+/***/ 321:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -769,7 +685,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 332:
+/***/ 331:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -788,7 +704,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 333:
+/***/ 332:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -807,7 +723,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 342:
+/***/ 341:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -830,7 +746,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 345:
+/***/ 344:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -848,7 +764,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 347:
+/***/ 346:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -866,7 +782,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 359:
+/***/ 358:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -884,20 +800,20 @@ if (false) {
 
 /***/ }),
 
-/***/ 377:
+/***/ 376:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(24);
+module.exports = __webpack_require__(23);
 
 
 /***/ }),
 
-/***/ 59:
+/***/ 58:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(1);
 //
 //
 //
@@ -926,7 +842,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 60:
+/***/ 59:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -944,7 +860,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 61:
+/***/ 60:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -972,7 +888,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 62:
+/***/ 61:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -990,7 +906,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 63:
+/***/ 62:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1038,7 +954,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 64:
+/***/ 63:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1056,7 +972,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 65:
+/***/ 64:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1085,7 +1001,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 66:
+/***/ 65:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1126,7 +1042,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 67:
+/***/ 66:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1144,12 +1060,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 68:
+/***/ 67:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_utils_getImageLightness__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_utils_getImageLightness__ = __webpack_require__(9);
 //
 //
 //
@@ -1222,6 +1138,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   }
 });
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var getImageLightness = function getImageLightness(image, onLoad, onError) {
+  var canvas = document.createElement('canvas');
+
+  image.crossOrigin = 'Anonymous';
+
+  image.onload = function () {
+    var colorSum = 0;
+    var ctx = void 0;
+    var imageData = void 0;
+    var imageMetadata = void 0;
+    var r = void 0;
+    var g = void 0;
+    var b = void 0;
+    var average = void 0;
+
+    canvas.width = this.width;
+    canvas.height = this.height;
+    ctx = canvas.getContext('2d');
+
+    ctx.drawImage(this, 0, 0);
+
+    imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    imageMetadata = imageData.data;
+
+    for (var x = 0, len = imageMetadata.length; x < len; x += 4) {
+      r = imageMetadata[x];
+      g = imageMetadata[x + 1];
+      b = imageMetadata[x + 2];
+
+      average = Math.floor((r + g + b) / 3);
+      colorSum += average;
+    }
+
+    onLoad(Math.floor(colorSum / (this.width * this.height)));
+  };
+
+  image.onerror = onError;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (getImageLightness);
 
 /***/ })
 

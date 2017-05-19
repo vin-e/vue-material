@@ -73,43 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 392);
+/******/ 	return __webpack_require__(__webpack_require__.s = 391);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -167,130 +136,64 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 100:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_utils_getClosestVueParent__ = __webpack_require__(3);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// Theme mixin
 
+// Grab the closest ancestor component's `md-theme` attribute OR grab the
+// `md-name` attribute from an `<md-theme>` component.
+function getAncestorThemeName(component) {
+  if (!component) {
+    return null;
+  }
 
+  var name = component.mdTheme;
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'md-option',
+  if (!name && component.$options._componentTag === 'md-theme') {
+    name = component.mdName;
+  }
+
+  return name || getAncestorThemeName(component.$parent);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = ({
   props: {
-    value: [String, Boolean, Number, Object]
+    mdTheme: String
   },
-  data: () => ({
-    parentSelect: {},
-    check: false,
-    index: 0
-  }),
   computed: {
-    isSelected() {
-      if (this.value && this.parentSelect.value) {
-        let thisValue = this.value.toString();
-
-        if (this.parentSelect.multiple) {
-          return this.parentSelect.value.indexOf(thisValue) >= 0;
-        }
-
-        return this.value && this.parentSelect.value && thisValue === this.parentSelect.value.toString();
-      }
-
-      return false;
+    mdEffectiveTheme: function mdEffectiveTheme() {
+      return getAncestorThemeName(this) || this.$material.currentTheme;
     },
-    classes() {
-      return {
-        'md-selected': this.isSelected,
-        'md-checked': this.check
-      };
-    }
-  },
-  methods: {
-    isMultiple() {
-      return this.parentSelect.multiple;
-    },
-    setParentOption() {
-      if (!this.isMultiple()) {
-        this.parentSelect.selectOption(this.value, this.$refs.item.textContent, this.$el);
-      } else {
-        this.check = !this.check;
-      }
-    },
-    selectOption($event) {
-      this.setParentOption();
-      this.$emit('selected', $event);
+    themeClass: function themeClass() {
+      return this.$material.prefix + this.mdEffectiveTheme;
     }
   },
   watch: {
-    isSelected(selected) {
-      if (this.isMultiple()) {
-        this.check = selected;
-      }
-    },
-    check(check) {
-      if (check) {
-        this.parentSelect.selectMultiple(this.index, this.value, this.$refs.item.textContent);
-      } else {
-        this.parentSelect.selectMultiple(this.index);
-      }
+    mdTheme: function mdTheme(value) {
+      this.$material.useTheme(value);
     }
   },
-  mounted() {
-    this.parentSelect = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core_utils_getClosestVueParent__["a" /* default */])(this.$parent, 'md-select');
-    this.parentContent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core_utils_getClosestVueParent__["a" /* default */])(this.$parent, 'md-menu-content');
+  beforeMount: function beforeMount() {
+    var localTheme = this.mdTheme;
 
-    if (!this.parentSelect) {
-      throw new Error('You must wrap the md-option in a md-select');
-    }
-
-    this.parentSelect.optionsAmount++;
-    this.index = this.parentSelect.optionsAmount;
-
-    this.parentSelect.multipleOptions[this.index] = {};
-    this.parentSelect.options[this.index] = this;
-
-    if (this.isMultiple() && this.parentSelect.value.indexOf(this.value) >= 0 || this.parentSelect.value === this.value) {
-      this.setParentOption();
-    }
-  },
-  beforeDestroy() {
-    if (this.parentSelect) {
-      delete this.parentSelect.options[this.index];
-      delete this.parentSelect.multipleOptions[this.index];
+    if (localTheme) {
+      this.$material.useTheme(localTheme);
     }
   }
 });
 
 /***/ }),
 
-/***/ 101:
+/***/ 100:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_utils_getClosestVueParent__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_utils_isArray__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_utils_getClosestVueParent__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_utils_isArray__ = __webpack_require__(11);
 //
 //
 //
@@ -486,21 +389,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 12:
+/***/ 11:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {var isArray = function isArray(value) {
+var isArray = function isArray(value) {
   return value && value.constructor === Array;
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (isArray);
-module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 184:
+/***/ 183:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -511,69 +412,37 @@ module.exports = exports["default"];
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {// Theme mixin
-
-// Grab the closest ancestor component's `md-theme` attribute OR grab the
-// `md-name` attribute from an `<md-theme>` component.
-function getAncestorThemeName(component) {
-  if (!component) {
-    return null;
+var getClosestVueParent = function getClosestVueParent($parent, cssClass) {
+  if (!$parent || !$parent.$el || !$parent.$el.classList || $parent._uid === 0) {
+    return false;
   }
 
-  var name = component.mdTheme;
-
-  if (!name && component.$options._componentTag === 'md-theme') {
-    name = component.mdName;
+  if ($parent.$el.classList.contains(cssClass)) {
+    return $parent;
   }
 
-  return name || getAncestorThemeName(component.$parent);
-}
+  return getClosestVueParent($parent.$parent, cssClass);
+};
 
-/* harmony default export */ __webpack_exports__["a"] = ({
-  props: {
-    mdTheme: String
-  },
-  computed: {
-    mdEffectiveTheme: function mdEffectiveTheme() {
-      return getAncestorThemeName(this) || this.$material.currentTheme;
-    },
-    themeClass: function themeClass() {
-      return this.$material.prefix + this.mdEffectiveTheme;
-    }
-  },
-  watch: {
-    mdTheme: function mdTheme(value) {
-      this.$material.useTheme(value);
-    }
-  },
-  beforeMount: function beforeMount() {
-    var localTheme = this.mdTheme;
-
-    if (localTheme) {
-      this.$material.useTheme(localTheme);
-    }
-  }
-});
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
+/* harmony default export */ __webpack_exports__["a"] = (getClosestVueParent);
 
 /***/ }),
 
-/***/ 214:
+/***/ 213:
 /***/ (function(module, exports) {
 
 module.exports = ".THEME_NAME.md-select:after {\n  color: BACKGROUND-CONTRAST-0.54; }\n\n.THEME_NAME.md-select:after {\n  color: BACKGROUND-CONTRAST-0.38; }\n\n.THEME_NAME.md-select-content .md-menu-item.md-selected, .THEME_NAME.md-select-content .md-menu-item.md-checked {\n  color: PRIMARY-COLOR; }\n"
 
 /***/ }),
 
-/***/ 273:
+/***/ 272:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(100),
+  __webpack_require__(99),
   /* template */
-  __webpack_require__(336),
+  __webpack_require__(335),
   /* scopeId */
   null,
   /* cssModules */
@@ -601,18 +470,18 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 274:
+/***/ 273:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(184)
+__webpack_require__(183)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(101),
+  __webpack_require__(100),
   /* template */
-  __webpack_require__(351),
+  __webpack_require__(350),
   /* scopeId */
   null,
   /* cssModules */
@@ -640,29 +509,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 3:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {var getClosestVueParent = function getClosestVueParent($parent, cssClass) {
-  if (!$parent || !$parent.$el || !$parent.$el.classList || $parent._uid === 0) {
-    return false;
-  }
-
-  if ($parent.$el.classList.contains(cssClass)) {
-    return $parent;
-  }
-
-  return getClosestVueParent($parent.$parent, cssClass);
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (getClosestVueParent);
-module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
-
-/***/ }),
-
-/***/ 336:
+/***/ 335:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -702,7 +549,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 351:
+/***/ 350:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -764,16 +611,16 @@ if (false) {
 
 /***/ }),
 
-/***/ 39:
+/***/ 38:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdSelect_vue__ = __webpack_require__(274);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdSelect_vue__ = __webpack_require__(273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdSelect_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdOption_vue__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdOption_vue__ = __webpack_require__(272);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdOption_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdOption_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdSelect_theme__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdSelect_theme__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdSelect_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mdSelect_theme__);
 /* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
@@ -786,16 +633,130 @@ function install(Vue) {
 
   Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_2__mdSelect_theme___default.a);
 }
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 392:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(39);
+module.exports = __webpack_require__(38);
 
+
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_utils_getClosestVueParent__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'md-option',
+  props: {
+    value: [String, Boolean, Number, Object]
+  },
+  data: () => ({
+    parentSelect: {},
+    check: false,
+    index: 0
+  }),
+  computed: {
+    isSelected() {
+      if (this.value && this.parentSelect.value) {
+        let thisValue = this.value.toString();
+
+        if (this.parentSelect.multiple) {
+          return this.parentSelect.value.indexOf(thisValue) >= 0;
+        }
+
+        return this.value && this.parentSelect.value && thisValue === this.parentSelect.value.toString();
+      }
+
+      return false;
+    },
+    classes() {
+      return {
+        'md-selected': this.isSelected,
+        'md-checked': this.check
+      };
+    }
+  },
+  methods: {
+    isMultiple() {
+      return this.parentSelect.multiple;
+    },
+    setParentOption() {
+      if (!this.isMultiple()) {
+        this.parentSelect.selectOption(this.value, this.$refs.item.textContent, this.$el);
+      } else {
+        this.check = !this.check;
+      }
+    },
+    selectOption($event) {
+      this.setParentOption();
+      this.$emit('selected', $event);
+    }
+  },
+  watch: {
+    isSelected(selected) {
+      if (this.isMultiple()) {
+        this.check = selected;
+      }
+    },
+    check(check) {
+      if (check) {
+        this.parentSelect.selectMultiple(this.index, this.value, this.$refs.item.textContent);
+      } else {
+        this.parentSelect.selectMultiple(this.index);
+      }
+    }
+  },
+  mounted() {
+    this.parentSelect = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core_utils_getClosestVueParent__["a" /* default */])(this.$parent, 'md-select');
+    this.parentContent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__core_utils_getClosestVueParent__["a" /* default */])(this.$parent, 'md-menu-content');
+
+    if (!this.parentSelect) {
+      throw new Error('You must wrap the md-option in a md-select');
+    }
+
+    this.parentSelect.optionsAmount++;
+    this.index = this.parentSelect.optionsAmount;
+
+    this.parentSelect.multipleOptions[this.index] = {};
+    this.parentSelect.options[this.index] = this;
+
+    if (this.isMultiple() && this.parentSelect.value.indexOf(this.value) >= 0 || this.parentSelect.value === this.value) {
+      this.setParentOption();
+    }
+  },
+  beforeDestroy() {
+    if (this.parentSelect) {
+      delete this.parentSelect.options[this.index];
+      delete this.parentSelect.multipleOptions[this.index];
+    }
+  }
+});
 
 /***/ })
 

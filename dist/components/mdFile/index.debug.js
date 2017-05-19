@@ -73,43 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 383);
+/******/ 	return __webpack_require__(__webpack_require__.s = 382);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -167,32 +136,52 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 186:
+/***/ 185:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 206:
+/***/ 2:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var getClosestVueParent = function getClosestVueParent($parent, cssClass) {
+  if (!$parent || !$parent.$el || !$parent.$el.classList || $parent._uid === 0) {
+    return false;
+  }
+
+  if ($parent.$el.classList.contains(cssClass)) {
+    return $parent;
+  }
+
+  return getClosestVueParent($parent.$parent, cssClass);
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (getClosestVueParent);
+
+/***/ }),
+
+/***/ 205:
 /***/ (function(module, exports) {
 
 module.exports = ""
 
 /***/ }),
 
-/***/ 254:
+/***/ 253:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(186)
+__webpack_require__(185)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(81),
+  __webpack_require__(80),
   /* template */
-  __webpack_require__(352),
+  __webpack_require__(351),
   /* scopeId */
   null,
   /* cssModules */
@@ -220,36 +209,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 3:
+/***/ 29:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {var getClosestVueParent = function getClosestVueParent($parent, cssClass) {
-  if (!$parent || !$parent.$el || !$parent.$el.classList || $parent._uid === 0) {
-    return false;
-  }
-
-  if ($parent.$el.classList.contains(cssClass)) {
-    return $parent;
-  }
-
-  return getClosestVueParent($parent.$parent, cssClass);
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (getClosestVueParent);
-module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
-
-/***/ }),
-
-/***/ 30:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdFile_vue__ = __webpack_require__(254);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdFile_vue__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdFile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdFile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdFile_theme__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdFile_theme__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdFile_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdFile_theme__);
 /* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
@@ -260,12 +227,10 @@ function install(Vue) {
 
   Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdFile_theme___default.a);
 }
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 352:
+/***/ 351:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -314,20 +279,20 @@ if (false) {
 
 /***/ }),
 
-/***/ 383:
+/***/ 382:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(30);
+module.exports = __webpack_require__(29);
 
 
 /***/ }),
 
-/***/ 81:
+/***/ 80:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_utils_getClosestVueParent__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_utils_getClosestVueParent__ = __webpack_require__(2);
 //
 //
 //

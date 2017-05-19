@@ -78,43 +78,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 372);
+/******/ 	return __webpack_require__(__webpack_require__.s = 371);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -172,19 +141,19 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 180:
+/***/ 179:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 20:
+/***/ 19:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdBackdrop_vue__ = __webpack_require__(226);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdBackdrop_vue__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdBackdrop_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdBackdrop_vue__);
 /* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
@@ -192,23 +161,21 @@ module.exports = function normalizeComponent (
 function install(Vue) {
   Vue.component('md-backdrop', __WEBPACK_IMPORTED_MODULE_0__mdBackdrop_vue___default.a);
 }
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 226:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(180)
+__webpack_require__(179)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(54),
+  __webpack_require__(53),
   /* template */
-  __webpack_require__(343),
+  __webpack_require__(342),
   /* scopeId */
   null,
   /* cssModules */
@@ -220,7 +187,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 343:
+/***/ 342:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -238,15 +205,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 372:
+/***/ 371:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(20);
+module.exports = __webpack_require__(19);
 
 
 /***/ }),
 
-/***/ 54:
+/***/ 53:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

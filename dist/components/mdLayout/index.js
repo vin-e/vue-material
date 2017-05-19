@@ -78,43 +78,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 386);
+/******/ 	return __webpack_require__(__webpack_require__.s = 385);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -172,23 +141,23 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 184:
+/***/ 183:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 259:
+/***/ 258:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(184)
+__webpack_require__(183)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(87),
+  __webpack_require__(86),
   /* template */
   null,
   /* scopeId */
@@ -202,12 +171,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 34:
+/***/ 33:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdLayout_vue__ = __webpack_require__(259);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdLayout_vue__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdLayout_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdLayout_vue__);
 /* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
@@ -215,20 +184,18 @@ module.exports = Component.exports
 function install(Vue) {
   Vue.component('md-layout', __WEBPACK_IMPORTED_MODULE_0__mdLayout_vue___default.a);
 }
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 386:
+/***/ 385:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(34);
+module.exports = __webpack_require__(33);
 
 
 /***/ }),
 
-/***/ 87:
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

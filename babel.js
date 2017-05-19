@@ -17,7 +17,6 @@ export default {
     ]
   ],
   plugins: [
-    'add-module-exports',
     'transform-object-rest-spread'
   ]
-}
+};

@@ -73,43 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 378);
+/******/ 	return __webpack_require__(__webpack_require__.s = 377);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -167,18 +136,11 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 189:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 2:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {// Theme mixin
+// Theme mixin
 
 // Grab the closest ancestor component's `md-theme` attribute OR grab the
 // `md-name` attribute from an `<md-theme>` component.
@@ -221,30 +183,56 @@ function getAncestorThemeName(component) {
     }
   }
 });
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 202:
+/***/ 188:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 201:
 /***/ (function(module, exports) {
 
 module.exports = ".THEME_NAME.md-checkbox.md-checked .md-checkbox-container {\n  background-color: ACCENT-COLOR;\n  border-color: ACCENT-COLOR; }\n  .THEME_NAME.md-checkbox.md-checked .md-checkbox-container:after {\n    border-color: ACCENT-CONTRAST; }\n\n.THEME_NAME.md-checkbox .md-ink-ripple {\n  color: ACCENT-COLOR; }\n\n.THEME_NAME.md-checkbox .md-ripple {\n  opacity: .26; }\n\n.THEME_NAME.md-checkbox.md-primary.md-checked .md-checkbox-container {\n  background-color: PRIMARY-COLOR;\n  border-color: PRIMARY-COLOR; }\n  .THEME_NAME.md-checkbox.md-primary.md-checked .md-checkbox-container:after {\n    border-color: PRIMARY-CONTRAST; }\n\n.THEME_NAME.md-checkbox.md-primary .md-ink-ripple {\n  color: PRIMARY-COLOR; }\n\n.THEME_NAME.md-checkbox.md-warn.md-checked .md-checkbox-container {\n  background-color: WARN-COLOR;\n  border-color: WARN-COLOR; }\n  .THEME_NAME.md-checkbox.md-warn.md-checked .md-checkbox-container:after {\n    border-color: WARN-CONTRAST; }\n\n.THEME_NAME.md-checkbox.md-warn .md-ink-ripple {\n  color: WARN-COLOR; }\n\n.THEME_NAME.md-checkbox.md-disabled.md-checked .md-checkbox-container {\n  background-color: rgba(0, 0, 0, 0.26);\n  border-color: transparent; }\n\n.THEME_NAME.md-checkbox.md-disabled:not(.md-checked) .md-checkbox-container {\n  border-color: rgba(0, 0, 0, 0.26); }\n"
 
 /***/ }),
 
-/***/ 242:
+/***/ 24:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdCheckbox_vue__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdCheckbox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdCheckbox_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdCheckbox_theme__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdCheckbox_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdCheckbox_theme__);
+/* harmony export (immutable) */ __webpack_exports__["default"] = install;
+
+
+
+function install(Vue) {
+  Vue.component('md-checkbox', __WEBPACK_IMPORTED_MODULE_0__mdCheckbox_vue___default.a);
+
+  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdCheckbox_theme___default.a);
+}
+
+/***/ }),
+
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(189)
+__webpack_require__(188)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(69),
+  __webpack_require__(68),
   /* template */
-  __webpack_require__(357),
+  __webpack_require__(356),
   /* scopeId */
   null,
   /* cssModules */
@@ -272,30 +260,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 25:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdCheckbox_vue__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdCheckbox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdCheckbox_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdCheckbox_theme__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdCheckbox_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdCheckbox_theme__);
-/* harmony export (immutable) */ __webpack_exports__["default"] = install;
-
-
-
-function install(Vue) {
-  Vue.component('md-checkbox', __WEBPACK_IMPORTED_MODULE_0__mdCheckbox_vue___default.a);
-
-  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdCheckbox_theme___default.a);
-}
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
-
-/***/ }),
-
-/***/ 357:
+/***/ 356:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -346,20 +311,20 @@ if (false) {
 
 /***/ }),
 
-/***/ 378:
+/***/ 377:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(25);
+module.exports = __webpack_require__(24);
 
 
 /***/ }),
 
-/***/ 69:
+/***/ 68:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(1);
 //
 //
 //

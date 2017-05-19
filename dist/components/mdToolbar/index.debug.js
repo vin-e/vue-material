@@ -73,43 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 402);
+/******/ 	return __webpack_require__(__webpack_require__.s = 401);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -167,42 +136,11 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 121:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'md-toolbar',
-  mixins: [__WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__["a" /* default */]]
-});
-
-/***/ }),
-
-/***/ 166:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {// Theme mixin
+// Theme mixin
 
 // Grab the closest ancestor component's `md-theme` attribute OR grab the
 // `md-name` attribute from an `<md-theme>` component.
@@ -245,30 +183,59 @@ function getAncestorThemeName(component) {
     }
   }
 });
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 224:
+/***/ 120:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(1);
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'md-toolbar',
+  mixins: [__WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__["a" /* default */]]
+});
+
+/***/ }),
+
+/***/ 165:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 223:
 /***/ (function(module, exports) {
 
 module.exports = ".THEME_NAME.md-toolbar {\n  background-color: PRIMARY-COLOR;\n  color: PRIMARY-CONTRAST; }\n  .THEME_NAME.md-toolbar .md-input-container.md-input-focused input,\n  .THEME_NAME.md-toolbar .md-input-container.md-input-focused textarea {\n    color: PRIMARY-CONTRAST;\n    text-shadow: 0 0 0 PRIMARY-CONTRAST; }\n  .THEME_NAME.md-toolbar .md-input-container.md-input-focused label,\n  .THEME_NAME.md-toolbar .md-input-container.md-input-focused .md-icon:not(.md-icon-delete) {\n    color: PRIMARY-CONTRAST; }\n  .THEME_NAME.md-toolbar .md-input-container:after {\n    background-color: PRIMARY-CONTRAST; }\n  .THEME_NAME.md-toolbar .md-input-container input,\n  .THEME_NAME.md-toolbar .md-input-container textarea {\n    color: PRIMARY-CONTRAST;\n    text-shadow: 0 0 0 PRIMARY-CONTRAST; }\n    .THEME_NAME.md-toolbar .md-input-container input::-webkit-input-placeholder,\n    .THEME_NAME.md-toolbar .md-input-container textarea::-webkit-input-placeholder {\n      color: PRIMARY-CONTRAST-0.54; }\n  .THEME_NAME.md-toolbar .md-input-container label,\n  .THEME_NAME.md-toolbar .md-input-container .md-icon:not(.md-icon-delete) {\n    color: PRIMARY-CONTRAST; }\n  .THEME_NAME.md-toolbar.md-accent {\n    background-color: ACCENT-COLOR;\n    color: ACCENT-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-accent .md-input-container.md-input-focused input,\n    .THEME_NAME.md-toolbar.md-accent .md-input-container.md-input-focused textarea {\n      color: ACCENT-CONTRAST;\n      text-shadow: 0 0 0 ACCENT-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-accent .md-input-container.md-input-focused label,\n    .THEME_NAME.md-toolbar.md-accent .md-input-container.md-input-focused .md-icon:not(.md-icon-delete) {\n      color: ACCENT-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-accent .md-input-container:after {\n      background-color: ACCENT-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-accent .md-input-container input,\n    .THEME_NAME.md-toolbar.md-accent .md-input-container textarea {\n      color: ACCENT-CONTRAST;\n      text-shadow: 0 0 0 ACCENT-CONTRAST; }\n      .THEME_NAME.md-toolbar.md-accent .md-input-container input::-webkit-input-placeholder,\n      .THEME_NAME.md-toolbar.md-accent .md-input-container textarea::-webkit-input-placeholder {\n        color: ACCENT-CONTRAST-0.54; }\n    .THEME_NAME.md-toolbar.md-accent .md-input-container label,\n    .THEME_NAME.md-toolbar.md-accent .md-input-container .md-icon:not(.md-icon-delete) {\n      color: ACCENT-CONTRAST; }\n  .THEME_NAME.md-toolbar.md-warn {\n    background-color: WARN-COLOR;\n    color: WARN-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-warn .md-input-container.md-input-focused input,\n    .THEME_NAME.md-toolbar.md-warn .md-input-container.md-input-focused textarea {\n      color: WARN-CONTRAST;\n      text-shadow: 0 0 0 WARN-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-warn .md-input-container.md-input-focused label,\n    .THEME_NAME.md-toolbar.md-warn .md-input-container.md-input-focused .md-icon:not(.md-icon-delete) {\n      color: WARN-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-warn .md-input-container:after {\n      background-color: WARN-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-warn .md-input-container input,\n    .THEME_NAME.md-toolbar.md-warn .md-input-container textarea {\n      color: WARN-CONTRAST;\n      text-shadow: 0 0 0 WARN-CONTRAST; }\n      .THEME_NAME.md-toolbar.md-warn .md-input-container input::-webkit-input-placeholder,\n      .THEME_NAME.md-toolbar.md-warn .md-input-container textarea::-webkit-input-placeholder {\n        color: WARN-CONTRAST-0.54; }\n    .THEME_NAME.md-toolbar.md-warn .md-input-container label,\n    .THEME_NAME.md-toolbar.md-warn .md-input-container .md-icon:not(.md-icon-delete) {\n      color: WARN-CONTRAST; }\n  .THEME_NAME.md-toolbar.md-transparent {\n    background-color: transparent;\n    color: BACKGROUND-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-transparent .md-input-container.md-input-focused input,\n    .THEME_NAME.md-toolbar.md-transparent .md-input-container.md-input-focused textarea {\n      color: BACKGROUND-CONTRAST;\n      text-shadow: 0 0 0 BACKGROUND-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-transparent .md-input-container.md-input-focused label,\n    .THEME_NAME.md-toolbar.md-transparent .md-input-container.md-input-focused .md-icon:not(.md-icon-delete) {\n      color: BACKGROUND-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-transparent .md-input-container:after {\n      background-color: BACKGROUND-CONTRAST; }\n    .THEME_NAME.md-toolbar.md-transparent .md-input-container input,\n    .THEME_NAME.md-toolbar.md-transparent .md-input-container textarea {\n      color: BACKGROUND-CONTRAST;\n      text-shadow: 0 0 0 BACKGROUND-CONTRAST; }\n      .THEME_NAME.md-toolbar.md-transparent .md-input-container input::-webkit-input-placeholder,\n      .THEME_NAME.md-toolbar.md-transparent .md-input-container textarea::-webkit-input-placeholder {\n        color: BACKGROUND-CONTRAST-0.54; }\n    .THEME_NAME.md-toolbar.md-transparent .md-input-container label,\n    .THEME_NAME.md-toolbar.md-transparent .md-input-container .md-icon:not(.md-icon-delete) {\n      color: BACKGROUND-CONTRAST; }\n"
 
 /***/ }),
 
-/***/ 294:
+/***/ 293:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(166)
+__webpack_require__(165)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(121),
+  __webpack_require__(120),
   /* template */
-  __webpack_require__(309),
+  __webpack_require__(308),
   /* scopeId */
   null,
   /* cssModules */
@@ -296,7 +263,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 309:
+/***/ 308:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -315,22 +282,22 @@ if (false) {
 
 /***/ }),
 
-/***/ 402:
+/***/ 401:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(49);
+module.exports = __webpack_require__(48);
 
 
 /***/ }),
 
-/***/ 49:
+/***/ 48:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdToolbar_vue__ = __webpack_require__(294);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdToolbar_vue__ = __webpack_require__(293);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdToolbar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdToolbar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdToolbar_theme__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdToolbar_theme__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdToolbar_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdToolbar_theme__);
 /* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
@@ -341,8 +308,6 @@ function install(Vue) {
 
   Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdToolbar_theme___default.a);
 }
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ })
 

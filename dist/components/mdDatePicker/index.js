@@ -78,43 +78,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 379);
+/******/ 	return __webpack_require__(__webpack_require__.s = 378);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ 1:
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -172,11 +141,61 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 11:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {var margin = 8;
+// Theme mixin
+
+// Grab the closest ancestor component's `md-theme` attribute OR grab the
+// `md-name` attribute from an `<md-theme>` component.
+function getAncestorThemeName(component) {
+  if (!component) {
+    return null;
+  }
+
+  var name = component.mdTheme;
+
+  if (!name && component.$options._componentTag === 'md-theme') {
+    name = component.mdName;
+  }
+
+  return name || getAncestorThemeName(component.$parent);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    mdTheme: String
+  },
+  computed: {
+    mdEffectiveTheme: function mdEffectiveTheme() {
+      return getAncestorThemeName(this) || this.$material.currentTheme;
+    },
+    themeClass: function themeClass() {
+      return this.$material.prefix + this.mdEffectiveTheme;
+    }
+  },
+  watch: {
+    mdTheme: function mdTheme(value) {
+      this.$material.useTheme(value);
+    }
+  },
+  beforeMount: function beforeMount() {
+    var localTheme = this.mdTheme;
+
+    if (localTheme) {
+      this.$material.useTheme(localTheme);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 10:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var margin = 8;
 
 var isAboveOfViewport = function isAboveOfViewport(element, position) {
   return position.top <= margin - parseInt(getComputedStyle(element).marginTop, 10);
@@ -217,16 +236,14 @@ var getInViewPosition = function getInViewPosition(element, position) {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (getInViewPosition);
-module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 137:
+/***/ 136:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
-var getDaysInMonth = __webpack_require__(7)
+var parse = __webpack_require__(3)
+var getDaysInMonth = __webpack_require__(6)
 
 /**
  * @category Month Helpers
@@ -263,10 +280,10 @@ module.exports = addMonths
 
 /***/ }),
 
-/***/ 138:
+/***/ 137:
 /***/ (function(module, exports, __webpack_require__) {
 
-var startOfDay = __webpack_require__(8)
+var startOfDay = __webpack_require__(7)
 
 var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_DAY = 86400000
@@ -311,15 +328,15 @@ module.exports = differenceInCalendarDays
 
 /***/ }),
 
-/***/ 139:
+/***/ 138:
 /***/ (function(module, exports, __webpack_require__) {
 
-var getDayOfYear = __webpack_require__(140)
-var getISOWeek = __webpack_require__(141)
-var getISOYear = __webpack_require__(16)
-var parse = __webpack_require__(4)
-var isValid = __webpack_require__(18)
-var enLocale = __webpack_require__(152)
+var getDayOfYear = __webpack_require__(139)
+var getISOWeek = __webpack_require__(140)
+var getISOYear = __webpack_require__(15)
+var parse = __webpack_require__(3)
+var isValid = __webpack_require__(17)
+var enLocale = __webpack_require__(151)
 
 /**
  * @category Common Helpers
@@ -646,12 +663,12 @@ module.exports = format
 
 /***/ }),
 
-/***/ 140:
+/***/ 139:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
-var startOfYear = __webpack_require__(159)
-var differenceInCalendarDays = __webpack_require__(138)
+var parse = __webpack_require__(3)
+var startOfYear = __webpack_require__(158)
+var differenceInCalendarDays = __webpack_require__(137)
 
 /**
  * @category Day Helpers
@@ -680,12 +697,12 @@ module.exports = getDayOfYear
 
 /***/ }),
 
-/***/ 141:
+/***/ 140:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
-var startOfISOWeek = __webpack_require__(9)
-var startOfISOYear = __webpack_require__(156)
+var parse = __webpack_require__(3)
+var startOfISOWeek = __webpack_require__(8)
+var startOfISOYear = __webpack_require__(155)
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -721,10 +738,10 @@ module.exports = getISOWeek
 
 /***/ }),
 
-/***/ 142:
+/***/ 141:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
+var parse = __webpack_require__(3)
 
 /**
  * @category Common Helpers
@@ -753,10 +770,10 @@ module.exports = isBefore
 
 /***/ }),
 
-/***/ 143:
+/***/ 142:
 /***/ (function(module, exports, __webpack_require__) {
 
-var startOfDay = __webpack_require__(8)
+var startOfDay = __webpack_require__(7)
 
 /**
  * @category Day Helpers
@@ -789,10 +806,10 @@ module.exports = isSameDay
 
 /***/ }),
 
-/***/ 144:
+/***/ 143:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
+var parse = __webpack_require__(3)
 
 /**
  * @category Month Helpers
@@ -825,10 +842,10 @@ module.exports = isSameMonth
 
 /***/ }),
 
-/***/ 145:
+/***/ 144:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
+var parse = __webpack_require__(3)
 
 /**
  * @category Year Helpers
@@ -860,10 +877,10 @@ module.exports = isSameYear
 
 /***/ }),
 
-/***/ 146:
+/***/ 145:
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSameMonth = __webpack_require__(144)
+var isSameMonth = __webpack_require__(143)
 
 /**
  * @category Month Helpers
@@ -889,10 +906,10 @@ module.exports = isThisMonth
 
 /***/ }),
 
-/***/ 147:
+/***/ 146:
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSameYear = __webpack_require__(145)
+var isSameYear = __webpack_require__(144)
 
 /**
  * @category Year Helpers
@@ -918,10 +935,10 @@ module.exports = isThisYear
 
 /***/ }),
 
-/***/ 148:
+/***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
-var startOfDay = __webpack_require__(8)
+var startOfDay = __webpack_require__(7)
 
 /**
  * @category Day Helpers
@@ -947,7 +964,7 @@ module.exports = isToday
 
 /***/ }),
 
-/***/ 149:
+/***/ 148:
 /***/ (function(module, exports) {
 
 var commonFormatterKeys = [
@@ -982,7 +999,7 @@ module.exports = buildFormattingTokensRegExp
 
 /***/ }),
 
-/***/ 150:
+/***/ 149:
 /***/ (function(module, exports) {
 
 function buildDistanceInWordsLocale () {
@@ -1088,10 +1105,62 @@ module.exports = buildDistanceInWordsLocale
 
 /***/ }),
 
-/***/ 151:
+/***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
-var buildFormattingTokensRegExp = __webpack_require__(149)
+var parse = __webpack_require__(3)
+var startOfISOWeek = __webpack_require__(8)
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Get the ISO week-numbering year of the given date.
+ *
+ * @description
+ * Get the ISO week-numbering year of the given date,
+ * which always starts 3 days before the year's first Thursday.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the ISO week-numbering year
+ *
+ * @example
+ * // Which ISO-week numbering year is 2 January 2005?
+ * var result = getISOYear(new Date(2005, 0, 2))
+ * //=> 2004
+ */
+function getISOYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+
+  var fourthOfJanuaryOfNextYear = new Date(0)
+  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
+  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
+  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
+
+  var fourthOfJanuaryOfThisYear = new Date(0)
+  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
+  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
+  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
+
+  if (date.getTime() >= startOfNextYear.getTime()) {
+    return year + 1
+  } else if (date.getTime() >= startOfThisYear.getTime()) {
+    return year
+  } else {
+    return year - 1
+  }
+}
+
+module.exports = getISOYear
+
+
+/***/ }),
+
+/***/ 150:
+/***/ (function(module, exports, __webpack_require__) {
+
+var buildFormattingTokensRegExp = __webpack_require__(148)
 
 function buildFormatLocale () {
   // Note: in English, the names of days of the week and months are capitalized.
@@ -1183,11 +1252,11 @@ module.exports = buildFormatLocale
 
 /***/ }),
 
-/***/ 152:
+/***/ 151:
 /***/ (function(module, exports, __webpack_require__) {
 
-var buildDistanceInWordsLocale = __webpack_require__(150)
-var buildFormatLocale = __webpack_require__(151)
+var buildDistanceInWordsLocale = __webpack_require__(149)
+var buildFormatLocale = __webpack_require__(150)
 
 /**
  * @category Locales
@@ -1201,10 +1270,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ 153:
+/***/ 152:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
+var parse = __webpack_require__(3)
 
 /**
  * @category Day Helpers
@@ -1234,11 +1303,11 @@ module.exports = setDate
 
 /***/ }),
 
-/***/ 154:
+/***/ 153:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
-var getDaysInMonth = __webpack_require__(7)
+var parse = __webpack_require__(3)
+var getDaysInMonth = __webpack_require__(6)
 
 /**
  * @category Month Helpers
@@ -1277,10 +1346,10 @@ module.exports = setMonth
 
 /***/ }),
 
-/***/ 155:
+/***/ 154:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
+var parse = __webpack_require__(3)
 
 /**
  * @category Year Helpers
@@ -1310,11 +1379,11 @@ module.exports = setYear
 
 /***/ }),
 
-/***/ 156:
+/***/ 155:
 /***/ (function(module, exports, __webpack_require__) {
 
-var getISOYear = __webpack_require__(16)
-var startOfISOWeek = __webpack_require__(9)
+var getISOYear = __webpack_require__(15)
+var startOfISOWeek = __webpack_require__(8)
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -1349,10 +1418,10 @@ module.exports = startOfISOYear
 
 /***/ }),
 
-/***/ 157:
+/***/ 156:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
+var parse = __webpack_require__(3)
 
 /**
  * @category Month Helpers
@@ -1382,10 +1451,10 @@ module.exports = startOfMonth
 
 /***/ }),
 
-/***/ 158:
+/***/ 157:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
+var parse = __webpack_require__(3)
 
 /**
  * @category Week Helpers
@@ -1427,10 +1496,10 @@ module.exports = startOfWeek
 
 /***/ }),
 
-/***/ 159:
+/***/ 158:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
+var parse = __webpack_require__(3)
 
 /**
  * @category Year Helpers
@@ -1462,58 +1531,6 @@ module.exports = startOfYear
 /***/ }),
 
 /***/ 16:
-/***/ (function(module, exports, __webpack_require__) {
-
-var parse = __webpack_require__(4)
-var startOfISOWeek = __webpack_require__(9)
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Get the ISO week-numbering year of the given date.
- *
- * @description
- * Get the ISO week-numbering year of the given date,
- * which always starts 3 days before the year's first Thursday.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the ISO week-numbering year
- *
- * @example
- * // Which ISO-week numbering year is 2 January 2005?
- * var result = getISOYear(new Date(2005, 0, 2))
- * //=> 2004
- */
-function getISOYear (dirtyDate) {
-  var date = parse(dirtyDate)
-  var year = date.getFullYear()
-
-  var fourthOfJanuaryOfNextYear = new Date(0)
-  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
-  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
-  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
-
-  var fourthOfJanuaryOfThisYear = new Date(0)
-  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
-  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
-  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
-
-  if (date.getTime() >= startOfNextYear.getTime()) {
-    return year + 1
-  } else if (date.getTime() >= startOfThisYear.getTime()) {
-    return year
-  } else {
-    return year - 1
-  }
-}
-
-module.exports = getISOYear
-
-
-/***/ }),
-
-/***/ 17:
 /***/ (function(module, exports) {
 
 /**
@@ -1540,10 +1557,10 @@ module.exports = isDate
 
 /***/ }),
 
-/***/ 18:
+/***/ 17:
 /***/ (function(module, exports, __webpack_require__) {
 
-var isDate = __webpack_require__(17)
+var isDate = __webpack_require__(16)
 
 /**
  * @category Common Helpers
@@ -1582,7 +1599,7 @@ module.exports = isValid
 
 /***/ }),
 
-/***/ 182:
+/***/ 181:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -1593,112 +1610,7 @@ module.exports = isValid
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {// Theme mixin
-
-// Grab the closest ancestor component's `md-theme` attribute OR grab the
-// `md-name` attribute from an `<md-theme>` component.
-function getAncestorThemeName(component) {
-  if (!component) {
-    return null;
-  }
-
-  var name = component.mdTheme;
-
-  if (!name && component.$options._componentTag === 'md-theme') {
-    name = component.mdName;
-  }
-
-  return name || getAncestorThemeName(component.$parent);
-}
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  props: {
-    mdTheme: String
-  },
-  computed: {
-    mdEffectiveTheme: function mdEffectiveTheme() {
-      return getAncestorThemeName(this) || this.$material.currentTheme;
-    },
-    themeClass: function themeClass() {
-      return this.$material.prefix + this.mdEffectiveTheme;
-    }
-  },
-  watch: {
-    mdTheme: function mdTheme(value) {
-      this.$material.useTheme(value);
-    }
-  },
-  beforeMount: function beforeMount() {
-    var localTheme = this.mdTheme;
-
-    if (localTheme) {
-      this.$material.useTheme(localTheme);
-    }
-  }
-});
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
-
-/***/ }),
-
-/***/ 203:
-/***/ (function(module, exports) {
-
-module.exports = ".THEME_NAME.md-datepicker-popup.md-select-date .md-datepicker-year-select{color:PRIMARY-CONTRAST-0.54}.THEME_NAME.md-datepicker-popup.md-select-date .md-datepicker-year-select:hover{color:PRIMARY-CONTRAST-0.87}.THEME_NAME.md-datepicker-popup.md-select-month .md-datepicker-year-select,.THEME_NAME.md-datepicker-popup.md-select-month .md-datepicker-date-select{color:PRIMARY-CONTRAST-0.54}.THEME_NAME.md-datepicker-popup.md-select-month .md-datepicker-year-select:hover,.THEME_NAME.md-datepicker-popup.md-select-month .md-datepicker-date-select:hover{color:PRIMARY-CONTRAST-0.87}.THEME_NAME.md-datepicker-popup.md-select-year .md-datepicker-date-select{color:PRIMARY-CONTRAST-0.54}.THEME_NAME.md-datepicker-popup.md-select-year .md-datepicker-date-select:hover{color:PRIMARY-CONTRAST-0.87}.THEME_NAME.md-datepicker-popup .md-datepicker-body{background-color:BACKGROUND-COLOR}.THEME_NAME.md-datepicker-popup .md-datepicker-header{background-color:PRIMARY-COLOR;color:PRIMARY-CONTRAST-0.9999}.THEME_NAME.md-datepicker-popup .md-datepicker-week-days{color:BACKGROUND-CONTRAST-0.54}.THEME_NAME.md-datepicker-popup .md-datepicker-days{color:BACKGROUND-CONTRAST-0.8}.THEME_NAME.md-datepicker-popup .md-datepicker-days .md-button:hover{background-color:PRIMARY-COLOR;color:PRIMARY-CONTRAST}.THEME_NAME .md-button.md-current:not(.md-raised){color:PRIMARY-COLOR}.THEME_NAME .md-button.md-selected:not(.md-raised){background-color:PRIMARY-COLOR;color:PRIMARY-CONTRAST}\n"
-
-/***/ }),
-
-/***/ 244:
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(182)
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(72),
-  /* template */
-  __webpack_require__(349),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 27:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdDatePicker_vue__ = __webpack_require__(244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdDatePicker_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdDatePicker_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdDatePicker_theme__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdDatePicker_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdDatePicker_theme__);
-/* harmony export (immutable) */ __webpack_exports__["default"] = install;
-
-
-
-function install(Vue) {
-  Vue.component('md-datepicker', Vue.extend(__WEBPACK_IMPORTED_MODULE_0__mdDatePicker_vue___default.a));
-
-  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdDatePicker_theme___default.a);
-}
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
-
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {var getClosestVueParent = function getClosestVueParent($parent, cssClass) {
+var getClosestVueParent = function getClosestVueParent($parent, cssClass) {
   if (!$parent || !$parent.$el || !$parent.$el.classList || $parent._uid === 0) {
     return false;
   }
@@ -1711,224 +1623,64 @@ module.exports = exports['default'];
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (getClosestVueParent);
-module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 349:
+/***/ 202:
 /***/ (function(module, exports) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "md-datepicker"
-  }, [_c('md-icon', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.openPicker($event)
-      }
-    }
-  }, [_vm._v("event")]), _vm._v(" "), _c('md-input', {
-    ref: "pickerInput",
-    attrs: {
-      "type": "date",
-      "id": _vm.id,
-      "name": _vm.name,
-      "required": _vm.required,
-      "placeholder": _vm.placeholder,
-      "disabled": _vm.disabled
-    },
-    nativeOn: {
-      "focus": function($event) {
-        _vm.openOnFocus($event)
-      },
-      "input": function($event) {
-        _vm.changeValue($event)
-      }
-    },
-    model: {
-      value: (_vm.modelDate),
-      callback: function($$v) {
-        _vm.modelDate = $$v
-      },
-      expression: "modelDate"
-    }
-  }), _vm._v(" "), _c('div', {
-    ref: "pickerElement",
-    staticClass: "md-datepicker-popup",
-    class: [_vm.themeClass, _vm.classes],
-    style: (_vm.styles)
-  }, [_c('div', {
-    staticClass: "md-datepicker-header"
-  }, [_c('span', {
-    staticClass: "md-datepicker-year-select",
-    on: {
-      "click": _vm.showYearPicker
-    }
-  }, [_vm._v(_vm._s(_vm.selectedDate.getFullYear()))]), _vm._v(" "), _c('div', {
-    staticClass: "md-datepicker-date-select",
-    on: {
-      "click": _vm.showDatePicker
-    }
-  }, [_c('strong', {
-    staticClass: "md-datepicker-dayname"
-  }, [_vm._v(_vm._s(_vm.locale.shortDays[_vm.selectedDate.getDay()]) + ",")]), _vm._v(" "), _c('strong', {
-    staticClass: "md-datepicker-monthname"
-  }, [_vm._v(_vm._s(_vm.locale.shortMonths[_vm.selectedDate.getMonth()]))]), _vm._v(" "), _c('strong', {
-    staticClass: "md-datepicker-day"
-  }, [_vm._v(_vm._s(_vm.selectedDate.getDate()))])])]), _vm._v(" "), _c('div', {
-    staticClass: "md-datepicker-body"
-  }, [_c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.currentView === 'date'),
-      expression: "currentView === 'date'"
-    }],
-    staticClass: "md-datepicker-calendar"
-  }, [_c('div', {
-    staticClass: "md-datepicker-controls"
-  }, [_c('button', {
-    staticClass: "md-button md-icon-button",
-    on: {
-      "click": _vm.previousMonth
-    }
-  }, [_c('md-icon', [_vm._v("keyboard_arrow_left")])], 1), _vm._v(" "), _c('button', {
-    staticClass: "md-button md-icon-button",
-    on: {
-      "click": _vm.nextMonth
-    }
-  }, [_c('md-icon', [_vm._v("keyboard_arrow_right")])], 1)]), _vm._v(" "), _c('transition-group', {
-    staticClass: "md-calendar-container",
-    class: {
-      'md-previous': _vm.lastAction === 'previous', 'md-next': _vm.lastAction === 'next'
-    },
-    attrs: {
-      "tag": "div",
-      "name": "slide-month",
-      "appear": ""
-    }
-  }, _vm._l(([_vm.currentDate]), (function(month) {
-    return _c('div', {
-      key: month,
-      staticClass: "md-datepicker-month"
-    }, [_c('md-button', {
-      staticClass: "md-current-date",
-      nativeOn: {
-        "click": function($event) {
-          _vm.showMonthPicker($event)
-        }
-      }
-    }, [_vm._v(_vm._s(_vm.locale.months[month.getMonth()]) + " " + _vm._s(month.getFullYear()))]), _vm._v(" "), _c('div', {
-      staticClass: "md-datepicker-week-days"
-    }, _vm._o(_vm._l((_vm.locale.shorterDays), (function(day) {
-      return _c('span', [_vm._v(_vm._s(day))])
-    })), 0, month)), _vm._v(" "), _c('div', {
-      staticClass: "md-datepicker-days"
-    }, [_vm._o(_vm._l((_vm.startOfMonth(month).getDay()), (function(day) {
-      return _c('span', {
-        staticClass: "md-empty"
-      })
-    })), 1, month), _vm._v(" "), _vm._l((_vm.getDaysInMonth(month)), (function(day) {
-      return _c('button', {
-        key: day,
-        staticClass: "md-button md-icon-button",
-        class: {
-          'md-current': _vm.isToday(day),
-            'md-selected': _vm.isSelectedDay(day)
-        },
-        on: {
-          "click": function($event) {
-            _vm.setDate(day)
-          }
-        }
-      }, [_vm._v("\n                " + _vm._s(day) + "\n              ")])
-    }))], 2)], 1)
-  })))], 1), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.currentView === 'year'),
-      expression: "currentView === 'year'"
-    }],
-    staticClass: "md-datepicker-years"
-  }, _vm._l((_vm.visibleYears()), (function(year) {
-    return _c('button', {
-      key: year,
-      staticClass: "md-button md-dense md-datepicker-year",
-      class: [{
-          'md-current': _vm.isThisYear(year),
-          'md-selected': _vm.isSelectedYear(year),
-        },
-        'data-' + year
-      ],
-      on: {
-        "click": function($event) {
-          _vm.setYear(year)
-        }
-      }
-    }, [_vm._v("\n          " + _vm._s(year) + "\n        ")])
-  }))), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.currentView === 'month'),
-      expression: "currentView === 'month'"
-    }],
-    staticClass: "md-datepicker-months"
-  }, _vm._l((_vm.locale.months), (function(month, index) {
-    return _c('button', {
-      key: month,
-      staticClass: "md-button md-dense md-datepicker-month",
-      class: {
-        'md-current': _vm.isThisMonth(index),
-          'md-selected': _vm.isSelectedMonth(index),
-      },
-      on: {
-        "click": function($event) {
-          _vm.setMonth(index)
-        }
-      }
-    }, [_vm._v("\n          " + _vm._s(month) + "\n        ")])
-  }))), _vm._v(" "), _c('div', {
-    staticClass: "md-datepicker-actions md-dialog-actions"
-  }, [_c('md-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.closePicker($event)
-      }
-    }
-  }, [_vm._v("Cancel")]), _vm._v(" "), _c('md-button', {
-    staticClass: "md-primary",
-    nativeOn: {
-      "click": function($event) {
-        _vm.closePicker($event)
-      }
-    }
-  }, [_vm._v("Ok")])], 1)])]), _vm._v(" "), _c('md-backdrop', {
-    ref: "pickerBackdrop",
-    staticClass: "md-datepicker-backdrop",
-    class: _vm.classes,
-    on: {
-      "close": _vm.closePicker
-    }
-  })], 1)
-},staticRenderFns: []}
+module.exports = ".THEME_NAME.md-datepicker-popup.md-select-date .md-datepicker-year-select{color:PRIMARY-CONTRAST-0.54}.THEME_NAME.md-datepicker-popup.md-select-date .md-datepicker-year-select:hover{color:PRIMARY-CONTRAST-0.87}.THEME_NAME.md-datepicker-popup.md-select-month .md-datepicker-year-select,.THEME_NAME.md-datepicker-popup.md-select-month .md-datepicker-date-select{color:PRIMARY-CONTRAST-0.54}.THEME_NAME.md-datepicker-popup.md-select-month .md-datepicker-year-select:hover,.THEME_NAME.md-datepicker-popup.md-select-month .md-datepicker-date-select:hover{color:PRIMARY-CONTRAST-0.87}.THEME_NAME.md-datepicker-popup.md-select-year .md-datepicker-date-select{color:PRIMARY-CONTRAST-0.54}.THEME_NAME.md-datepicker-popup.md-select-year .md-datepicker-date-select:hover{color:PRIMARY-CONTRAST-0.87}.THEME_NAME.md-datepicker-popup .md-datepicker-body{background-color:BACKGROUND-COLOR}.THEME_NAME.md-datepicker-popup .md-datepicker-header{background-color:PRIMARY-COLOR;color:PRIMARY-CONTRAST-0.9999}.THEME_NAME.md-datepicker-popup .md-datepicker-week-days{color:BACKGROUND-CONTRAST-0.54}.THEME_NAME.md-datepicker-popup .md-datepicker-days{color:BACKGROUND-CONTRAST-0.8}.THEME_NAME.md-datepicker-popup .md-datepicker-days .md-button:hover{background-color:PRIMARY-COLOR;color:PRIMARY-CONTRAST}.THEME_NAME .md-button.md-current:not(.md-raised){color:PRIMARY-COLOR}.THEME_NAME .md-button.md-selected:not(.md-raised){background-color:PRIMARY-COLOR;color:PRIMARY-CONTRAST}\n"
 
 /***/ }),
 
-/***/ 379:
+/***/ 243:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(27);
+
+/* styles */
+__webpack_require__(181)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(71),
+  /* template */
+  __webpack_require__(348),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
 
 
 /***/ }),
 
-/***/ 4:
+/***/ 26:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdDatePicker_vue__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdDatePicker_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdDatePicker_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdDatePicker_theme__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdDatePicker_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdDatePicker_theme__);
+/* harmony export (immutable) */ __webpack_exports__["default"] = install;
+
+
+
+function install(Vue) {
+  Vue.component('md-datepicker', Vue.extend(__WEBPACK_IMPORTED_MODULE_0__mdDatePicker_vue___default.a));
+
+  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdDatePicker_theme___default.a);
+}
+
+/***/ }),
+
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
-var isDate = __webpack_require__(17)
+var isDate = __webpack_require__(16)
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -2252,11 +2004,220 @@ module.exports = parse
 
 /***/ }),
 
-/***/ 5:
+/***/ 348:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "md-datepicker"
+  }, [_c('md-icon', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.openPicker($event)
+      }
+    }
+  }, [_vm._v("event")]), _vm._v(" "), _c('md-input', {
+    ref: "pickerInput",
+    attrs: {
+      "type": "date",
+      "id": _vm.id,
+      "name": _vm.name,
+      "required": _vm.required,
+      "placeholder": _vm.placeholder,
+      "disabled": _vm.disabled
+    },
+    nativeOn: {
+      "focus": function($event) {
+        _vm.openOnFocus($event)
+      },
+      "input": function($event) {
+        _vm.changeValue($event)
+      }
+    },
+    model: {
+      value: (_vm.modelDate),
+      callback: function($$v) {
+        _vm.modelDate = $$v
+      },
+      expression: "modelDate"
+    }
+  }), _vm._v(" "), _c('div', {
+    ref: "pickerElement",
+    staticClass: "md-datepicker-popup",
+    class: [_vm.themeClass, _vm.classes],
+    style: (_vm.styles)
+  }, [_c('div', {
+    staticClass: "md-datepicker-header"
+  }, [_c('span', {
+    staticClass: "md-datepicker-year-select",
+    on: {
+      "click": _vm.showYearPicker
+    }
+  }, [_vm._v(_vm._s(_vm.selectedDate.getFullYear()))]), _vm._v(" "), _c('div', {
+    staticClass: "md-datepicker-date-select",
+    on: {
+      "click": _vm.showDatePicker
+    }
+  }, [_c('strong', {
+    staticClass: "md-datepicker-dayname"
+  }, [_vm._v(_vm._s(_vm.locale.shortDays[_vm.selectedDate.getDay()]) + ",")]), _vm._v(" "), _c('strong', {
+    staticClass: "md-datepicker-monthname"
+  }, [_vm._v(_vm._s(_vm.locale.shortMonths[_vm.selectedDate.getMonth()]))]), _vm._v(" "), _c('strong', {
+    staticClass: "md-datepicker-day"
+  }, [_vm._v(_vm._s(_vm.selectedDate.getDate()))])])]), _vm._v(" "), _c('div', {
+    staticClass: "md-datepicker-body"
+  }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.currentView === 'date'),
+      expression: "currentView === 'date'"
+    }],
+    staticClass: "md-datepicker-calendar"
+  }, [_c('div', {
+    staticClass: "md-datepicker-controls"
+  }, [_c('button', {
+    staticClass: "md-button md-icon-button",
+    on: {
+      "click": _vm.previousMonth
+    }
+  }, [_c('md-icon', [_vm._v("keyboard_arrow_left")])], 1), _vm._v(" "), _c('button', {
+    staticClass: "md-button md-icon-button",
+    on: {
+      "click": _vm.nextMonth
+    }
+  }, [_c('md-icon', [_vm._v("keyboard_arrow_right")])], 1)]), _vm._v(" "), _c('transition-group', {
+    staticClass: "md-calendar-container",
+    class: {
+      'md-previous': _vm.lastAction === 'previous', 'md-next': _vm.lastAction === 'next'
+    },
+    attrs: {
+      "tag": "div",
+      "name": "slide-month",
+      "appear": ""
+    }
+  }, _vm._l(([_vm.currentDate]), (function(month) {
+    return _c('div', {
+      key: month,
+      staticClass: "md-datepicker-month"
+    }, [_c('md-button', {
+      staticClass: "md-current-date",
+      nativeOn: {
+        "click": function($event) {
+          _vm.showMonthPicker($event)
+        }
+      }
+    }, [_vm._v(_vm._s(_vm.locale.months[month.getMonth()]) + " " + _vm._s(month.getFullYear()))]), _vm._v(" "), _c('div', {
+      staticClass: "md-datepicker-week-days"
+    }, _vm._o(_vm._l((_vm.locale.shorterDays), (function(day) {
+      return _c('span', [_vm._v(_vm._s(day))])
+    })), 0, month)), _vm._v(" "), _c('div', {
+      staticClass: "md-datepicker-days"
+    }, [_vm._o(_vm._l((_vm.startOfMonth(month).getDay()), (function(day) {
+      return _c('span', {
+        staticClass: "md-empty"
+      })
+    })), 1, month), _vm._v(" "), _vm._l((_vm.getDaysInMonth(month)), (function(day) {
+      return _c('button', {
+        key: day,
+        staticClass: "md-button md-icon-button",
+        class: {
+          'md-current': _vm.isToday(day),
+            'md-selected': _vm.isSelectedDay(day)
+        },
+        on: {
+          "click": function($event) {
+            _vm.setDate(day)
+          }
+        }
+      }, [_vm._v("\n                " + _vm._s(day) + "\n              ")])
+    }))], 2)], 1)
+  })))], 1), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.currentView === 'year'),
+      expression: "currentView === 'year'"
+    }],
+    staticClass: "md-datepicker-years"
+  }, _vm._l((_vm.visibleYears()), (function(year) {
+    return _c('button', {
+      key: year,
+      staticClass: "md-button md-dense md-datepicker-year",
+      class: [{
+          'md-current': _vm.isThisYear(year),
+          'md-selected': _vm.isSelectedYear(year),
+        },
+        'data-' + year
+      ],
+      on: {
+        "click": function($event) {
+          _vm.setYear(year)
+        }
+      }
+    }, [_vm._v("\n          " + _vm._s(year) + "\n        ")])
+  }))), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.currentView === 'month'),
+      expression: "currentView === 'month'"
+    }],
+    staticClass: "md-datepicker-months"
+  }, _vm._l((_vm.locale.months), (function(month, index) {
+    return _c('button', {
+      key: month,
+      staticClass: "md-button md-dense md-datepicker-month",
+      class: {
+        'md-current': _vm.isThisMonth(index),
+          'md-selected': _vm.isSelectedMonth(index),
+      },
+      on: {
+        "click": function($event) {
+          _vm.setMonth(index)
+        }
+      }
+    }, [_vm._v("\n          " + _vm._s(month) + "\n        ")])
+  }))), _vm._v(" "), _c('div', {
+    staticClass: "md-datepicker-actions md-dialog-actions"
+  }, [_c('md-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.closePicker($event)
+      }
+    }
+  }, [_vm._v("Cancel")]), _vm._v(" "), _c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.closePicker($event)
+      }
+    }
+  }, [_vm._v("Ok")])], 1)])]), _vm._v(" "), _c('md-backdrop', {
+    ref: "pickerBackdrop",
+    staticClass: "md-datepicker-backdrop",
+    class: _vm.classes,
+    on: {
+      "close": _vm.closePicker
+    }
+  })], 1)
+},staticRenderFns: []}
+
+/***/ }),
+
+/***/ 378:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(26);
+
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {function transitionEndEventName() {
+function transitionEndEventName() {
   var el = document.createElement('span');
   var transitions = {
     transition: 'transitionend',
@@ -2273,15 +2234,13 @@ module.exports = parse
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (transitionEndEventName());
-module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 7:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
+var parse = __webpack_require__(3)
 
 /**
  * @category Month Helpers
@@ -2313,42 +2272,74 @@ module.exports = getDaysInMonth
 
 /***/ }),
 
-/***/ 72:
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(3)
+
+/**
+ * @category Day Helpers
+ * @summary Return the start of a day for the given date.
+ *
+ * @description
+ * Return the start of a day for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a day
+ *
+ * @example
+ * // The start of a day for 2 September 2014 11:55:00:
+ * var result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 02 2014 00:00:00
+ */
+function startOfDay (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfDay
+
+
+/***/ }),
+
+/***/ 71:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_utils_getClosestVueParent__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_utils_getInViewPosition__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_utils_transitionEndEventName__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_date_fns_format__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_utils_getClosestVueParent__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_utils_getInViewPosition__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_utils_transitionEndEventName__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_date_fns_format__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_date_fns_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_date_fns_format__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_date_fns_parse__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_date_fns_parse__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_date_fns_parse___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_date_fns_parse__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_date_fns_start_of_month__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_date_fns_start_of_month__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_date_fns_start_of_month___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_date_fns_start_of_month__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_date_fns_add_months__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_date_fns_add_months__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_date_fns_add_months___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_date_fns_add_months__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_date_fns_get_days_in_month__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_date_fns_get_days_in_month__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_date_fns_get_days_in_month___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_date_fns_get_days_in_month__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_date_fns_set_date__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_date_fns_set_date__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_date_fns_set_date___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_date_fns_set_date__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_date_fns_set_month__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_date_fns_set_month__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_date_fns_set_month___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_date_fns_set_month__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_date_fns_set_year__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_date_fns_set_year__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_date_fns_set_year___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_date_fns_set_year__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_date_fns_is_today__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_date_fns_is_today__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_date_fns_is_today___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_date_fns_is_today__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_date_fns_is_same_day__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_date_fns_is_same_day__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_date_fns_is_same_day___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_date_fns_is_same_day__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_date_fns_is_this_month__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_date_fns_is_this_month__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_date_fns_is_this_month___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_date_fns_is_this_month__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_date_fns_is_this_year__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_date_fns_is_this_year__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_date_fns_is_this_year___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_date_fns_is_this_year__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_date_fns_is_before__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_date_fns_is_before__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_date_fns_is_before___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_date_fns_is_before__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_date_fns_is_valid__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_date_fns_is_valid__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_date_fns_is_valid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_date_fns_is_valid__);
 //
 //
@@ -2691,39 +2682,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(4)
-
-/**
- * @category Day Helpers
- * @summary Return the start of a day for the given date.
- *
- * @description
- * Return the start of a day for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the start of a day
- *
- * @example
- * // The start of a day for 2 September 2014 11:55:00:
- * var result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Tue Sep 02 2014 00:00:00
- */
-function startOfDay (dirtyDate) {
-  var date = parse(dirtyDate)
-  date.setHours(0, 0, 0, 0)
-  return date
-}
-
-module.exports = startOfDay
-
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports, __webpack_require__) {
-
-var startOfWeek = __webpack_require__(158)
+var startOfWeek = __webpack_require__(157)
 
 /**
  * @category ISO Week Helpers
