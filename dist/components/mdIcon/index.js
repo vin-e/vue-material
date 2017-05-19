@@ -3,4 +3,426 @@
 * Made with love by Marcos Moura
 * Released under the MIT License.
 */   
-!(function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.VueMaterial=t():e.VueMaterial=t()})(this,(function(){return (function(e){function t(r){if(n[r])return n[r].exports;var s=n[r]={i:r,l:!1,exports:{}};return e[r].call(s.exports,s,s.exports,t),s.l=!0,s.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/",t(t.s=408)})({0:function(e,t){e.exports=function(e,t,n,r){var s,o=e=e||{},i=typeof e.default;"object"!==i&&"function"!==i||(s=e,o=e.default);var c="function"==typeof o?o.options:o;if(t&&(c.render=t.render,c.staticRenderFns=t.staticRenderFns),n&&(c._scopeId=n),r){var a=c.computed||(c.computed={});Object.keys(r).forEach((function(e){var t=r[e];a[e]=function(){return t}}))}return{esModule:s,exports:o,options:c}}},1:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={props:{mdTheme:String},data:function(){return{closestThemedParent:!1}},methods:{getClosestThemedParent:function(e){return!(!e||!e.$el||0===e._uid)&&(e.mdTheme||e.mdName?e:this.getClosestThemedParent(e.$parent))}},computed:{themeClass:function(){if(this.mdTheme)return"md-theme-"+this.mdTheme;var e=this.closestThemedParent.mdTheme;return e||(e=this.closestThemedParent?this.closestThemedParent.mdName:this.$material.currentTheme),"md-theme-"+e}},mounted:function(){this.closestThemedParent=this.getClosestThemedParent(this.$parent),this.$material.currentTheme||this.$material.setCurrentTheme("default")}},e.exports=t.default},101:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function s(e){e.component("md-icon",i.default),e.material.styles.push(a.default)}Object.defineProperty(t,"__esModule",{value:!0}),t.default=s;var o=n(288),i=r(o),c=n(242),a=r(c);e.exports=t.default},151:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var s=n(1),o=r(s),i={};t.default={props:{mdSrc:String,mdIconset:{type:String,default:"material-icons"}},data:function(){return{svgContent:null,imageSrc:null}},mixins:[o.default],watch:{mdSrc:function(){this.svgContent=null,this.imageSrc=null,this.checkSrc()}},methods:{isImage:function(e){return e.indexOf("image")>=0},isSVG:function(e){return e.indexOf("svg")>=0},setSVGContent:function(e){var t=this;this.svgContent=e,this.$nextTick((function(){t.$el.children[0].removeAttribute("fill")}))},loadSVG:function(){var e=this;i[this.mdSrc]?this.setSVGContent(i[this.mdSrc]):!(function(){var t=new XMLHttpRequest,n=e;t.open("GET",e.mdSrc,!0),t.onload=function(){var e=this.getResponseHeader("content-type");this.status>=200&&this.status<400&&n.isImage(e)?n.isSVG(e)?(i[n.mdSrc]=this.response,n.setSVGContent(this.response)):n.loadImage():console.warn("The file "+n.mdSrc+" is not a valid image.")},t.send()})()},loadImage:function(){this.imageSrc=this.mdSrc},checkSrc:function(){this.mdSrc&&(this.mdSrc.indexOf(".svg")>=0?this.loadSVG():this.loadImage())}},mounted:function(){this.checkSrc()}},e.exports=t.default},207:function(e,t){},242:function(e,t){e.exports=".THEME_NAME.md-icon.md-primary{color:PRIMARY-COLOR}.THEME_NAME.md-icon.md-accent{color:ACCENT-COLOR}.THEME_NAME.md-icon.md-warn{color:WARN-COLOR}\n"},288:function(e,t,n){n(207);var r=n(0)(n(151),n(348),null,null);e.exports=r.exports},348:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return e.svgContent?n("i",{staticClass:"md-icon",class:[e.themeClass],domProps:{innerHTML:e._s(e.svgContent)}}):e.imageSrc?n("md-image",{staticClass:"md-icon",class:[e.themeClass],attrs:{"md-src":e.imageSrc}}):n("i",{staticClass:"md-icon",class:[e.themeClass,e.mdIconset],attrs:{"aria-hidden":!!e.mdIconset}},[e._t("default")],2)},staticRenderFns:[]}},408:function(e,t,n){e.exports=n(101)}})}));
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["VueMaterial"] = factory();
+	else
+		root["VueMaterial"] = factory();
+})(this, (function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 383);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 0:
+/***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if(!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true,
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  scopeId,
+  cssModules
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  // inject cssModules
+  if (cssModules) {
+    var computed = Object.create(options.computed || null)
+    Object.keys(cssModules).forEach((function (key) {
+      var module = cssModules[key]
+      computed[key] = function () { return module }
+    }))
+    options.computed = computed
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ 193:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {// Theme mixin
+
+// Grab the closest ancestor component's `md-theme` attribute OR grab the
+// `md-name` attribute from an `<md-theme>` component.
+function getAncestorThemeName(component) {
+  if (!component) {
+    return null;
+  }
+
+  var name = component.mdTheme;
+
+  if (!name && component.$options._componentTag === 'md-theme') {
+    name = component.mdName;
+  }
+
+  return name || getAncestorThemeName(component.$parent);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    mdTheme: String
+  },
+  computed: {
+    mdEffectiveTheme: function mdEffectiveTheme() {
+      return getAncestorThemeName(this) || this.$material.currentTheme;
+    },
+    themeClass: function themeClass() {
+      return this.$material.prefix + this.mdEffectiveTheme;
+    }
+  },
+  watch: {
+    mdTheme: function mdTheme(value) {
+      this.$material.useTheme(value);
+    }
+  },
+  beforeMount: function beforeMount() {
+    var localTheme = this.mdTheme;
+
+    if (localTheme) {
+      this.$material.useTheme(localTheme);
+    }
+  }
+});
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
+
+/***/ }),
+
+/***/ 206:
+/***/ (function(module, exports) {
+
+module.exports = ".THEME_NAME.md-icon.md-primary{color:PRIMARY-COLOR}.THEME_NAME.md-icon.md-accent{color:ACCENT-COLOR}.THEME_NAME.md-icon.md-warn{color:WARN-COLOR}\n"
+
+/***/ }),
+
+/***/ 254:
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(193)
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(82),
+  /* template */
+  __webpack_require__(365),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 31:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdIcon_vue__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdIcon_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdIcon_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdIcon_theme__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdIcon_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdIcon_theme__);
+/* harmony export (immutable) */ __webpack_exports__["default"] = install;
+
+
+
+function install(Vue) {
+  Vue.component('md-icon', __WEBPACK_IMPORTED_MODULE_0__mdIcon_vue___default.a);
+
+  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdIcon_theme___default.a);
+}
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
+
+/***/ }),
+
+/***/ 365:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.svgContent) ? _c('i', {
+    staticClass: "md-icon",
+    class: [_vm.themeClass],
+    domProps: {
+      "innerHTML": _vm._s(_vm.svgContent)
+    }
+  }) : (_vm.imageSrc) ? _c('md-image', {
+    staticClass: "md-icon",
+    class: [_vm.themeClass],
+    attrs: {
+      "md-src": _vm.imageSrc
+    }
+  }) : _c('i', {
+    staticClass: "md-icon",
+    class: [_vm.themeClass, _vm.mdIconset],
+    attrs: {
+      "aria-hidden": !!_vm.mdIconset
+    }
+  }, [_vm._t("default")], 2)
+},staticRenderFns: []}
+
+/***/ }),
+
+/***/ 383:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(31);
+
+
+/***/ }),
+
+/***/ 82:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+let registeredIcons = {};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'md-icon',
+  props: {
+    mdSrc: String,
+    mdIconset: {
+      type: String,
+      default: 'material-icons'
+    }
+  },
+  data: () => ({
+    svgContent: null,
+    imageSrc: null
+  }),
+  mixins: [__WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__["a" /* default */]],
+  watch: {
+    mdSrc() {
+      this.svgContent = null;
+      this.imageSrc = null;
+      this.checkSrc();
+    }
+  },
+  methods: {
+    isImage(mimetype) {
+      return mimetype.indexOf('image') >= 0;
+    },
+    isSVG(mimetype) {
+      return mimetype.indexOf('svg') >= 0;
+    },
+    setSVGContent(value) {
+      this.svgContent = value;
+
+      this.$nextTick(() => {
+        this.$el.children[0].removeAttribute('fill');
+      });
+    },
+    loadSVG() {
+      if (!registeredIcons[this.mdSrc]) {
+        const request = new XMLHttpRequest();
+        const self = this;
+
+        request.open('GET', this.mdSrc, true);
+
+        request.onload = function () {
+          const mimetype = this.getResponseHeader('content-type');
+
+          if (this.status >= 200 && this.status < 400 && self.isImage(mimetype)) {
+            if (self.isSVG(mimetype)) {
+              registeredIcons[self.mdSrc] = this.response;
+              self.setSVGContent(this.response);
+            } else {
+              self.loadImage();
+            }
+          } else {
+            console.warn(`The file ${self.mdSrc} is not a valid image.`);
+          }
+        };
+
+        request.send();
+      } else {
+        this.setSVGContent(registeredIcons[this.mdSrc]);
+      }
+    },
+    loadImage() {
+      this.imageSrc = this.mdSrc;
+    },
+    checkSrc() {
+      if (this.mdSrc) {
+        if (this.mdSrc.indexOf('.svg') >= 0) {
+          this.loadSVG();
+        } else {
+          this.loadImage();
+        }
+      }
+    }
+  },
+  mounted() {
+    this.checkSrc();
+  }
+});
+
+/***/ })
+
+/******/ });
+}));

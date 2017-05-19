@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -65,21 +65,55 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
-
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 411);
+/******/ 	return __webpack_require__(__webpack_require__.s = 387);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
 /***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if(!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true,
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
 
 module.exports = function normalizeComponent (
   rawScriptExports,
@@ -115,11 +149,12 @@ module.exports = function normalizeComponent (
 
   // inject cssModules
   if (cssModules) {
-    var computed = options.computed || (options.computed = {})
+    var computed = Object.create(options.computed || null)
     Object.keys(cssModules).forEach((function (key) {
       var module = cssModules[key]
       computed[key] = function () { return module }
     }))
+    options.computed = computed
   }
 
   return {
@@ -132,43 +167,87 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 104:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 185:
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = install;
-
-var _mdLayout = __webpack_require__(293);
-
-var _mdLayout2 = _interopRequireDefault(_mdLayout);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function install(Vue) {
-  Vue.component('md-layout', _mdLayout2.default);
-}
-module.exports = exports['default'];
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 156:
+/***/ 260:
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(185)
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(87),
+  /* template */
+  null,
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\r\\vue-material-fork\\src\\components\\mdLayout\\mdLayout.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9bf36dc6", Component.options)
+  } else {
+    hotAPI.reload("data-v-9bf36dc6", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 34:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdLayout_vue__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdLayout_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdLayout_vue__);
+/* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+function install(Vue) {
+  Vue.component('md-layout', __WEBPACK_IMPORTED_MODULE_0__mdLayout_vue___default.a);
+}
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
+
+/***/ }),
+
+/***/ 387:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(34);
+
+
+/***/ }),
+
+/***/ 87:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-exports.default = {
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'md-layout',
   props: {
     mdTag: {
       type: String,
@@ -203,6 +282,12 @@ exports.default = {
     mdAlignMedium: String,
     mdAlignLarge: String,
     mdAlignXlarge: String,
+    mdVerticalAlign: String,
+    mdVerticalAlignXsmall: String,
+    mdVerticalAlignSmall: String,
+    mdVerticalAlignMedium: String,
+    mdVerticalAlignLarge: String,
+    mdVerticalAlignXlarge: String,
     mdFlex: [String, Number, Boolean],
     mdFlexXsmall: [String, Number, Boolean],
     mdFlexSmall: [String, Number, Boolean],
@@ -217,8 +302,8 @@ exports.default = {
     mdFlexOffsetXlarge: [String, Number, Boolean]
   },
   computed: {
-    classes: function classes() {
-      var classes = {
+    classes() {
+      let classes = {
         'md-row': this.mdRow,
         'md-row-xsmall': this.mdRowXsmall,
         'md-row-small': this.mdRowSmall,
@@ -267,7 +352,7 @@ exports.default = {
       this.generatePropClasses('md-flex-offset', 'large', 'mdFlexOffsetLarge', classes);
       this.generatePropClasses('md-flex-offset', 'xlarge', 'mdFlexOffsetXlarge', classes);
 
-      /* Alignment */
+      /* Horizontal Alignment */
       this.generatePropClasses('md-align', '', 'mdAlign', classes);
       this.generatePropClasses('md-align', 'xsmall', 'mdAlignXsmall', classes);
       this.generatePropClasses('md-align', 'small', 'mdAlignSmall', classes);
@@ -275,11 +360,19 @@ exports.default = {
       this.generatePropClasses('md-align', 'large', 'mdAlignLarge', classes);
       this.generatePropClasses('md-align', 'xlarge', 'mdAlignXlarge', classes);
 
+      /* Vertical Alignment */
+      this.generatePropClasses('md-vertical-align', '', 'mdVerticalAlign', classes);
+      this.generatePropClasses('md-vertical-align', 'xsmall', 'mdVerticalAlignXsmall', classes);
+      this.generatePropClasses('md-vertical-align', 'small', 'mdVerticalAlignSmall', classes);
+      this.generatePropClasses('md-vertical-align', 'medium', 'mdVerticalAlignMedium', classes);
+      this.generatePropClasses('md-vertical-align', 'large', 'mdVerticalAlignLarge', classes);
+      this.generatePropClasses('md-vertical-align', 'xlarge', 'mdVerticalAlignXlarge', classes);
+
       return classes;
     }
   },
   methods: {
-    generatePropClasses: function generatePropClasses(prop, size, name, object) {
+    generatePropClasses(prop, size, name, object) {
       if (size) {
         size = '-' + size;
       }
@@ -297,67 +390,13 @@ exports.default = {
       }
     }
   },
-  render: function render(createElement) {
+  render(createElement) {
     return createElement(this.mdTag, {
       staticClass: 'md-layout',
       class: this.classes
     }, this.$slots.default);
   }
-};
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ 227:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 293:
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(227)
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(156),
-  /* template */
-  null,
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/mrufino/Projects/personal/github/vue-material/src/components/mdLayout/mdLayout.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a85016b8", Component.options)
-  } else {
-    hotAPI.reload("data-v-a85016b8", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 411:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(104);
-
+});
 
 /***/ })
 

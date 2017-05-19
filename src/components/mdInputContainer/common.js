@@ -81,12 +81,9 @@ export default {
     },
     onInput($event) {
       this.updateValues();
-<<<<<<< HEAD
       this.$emit('change', this.$el.value, $event);
       this.$emit($event.type, this.$el.value, $event);
-=======
       this.lazyEventEmitter();
->>>>>>> develop
     }
   }
 };

@@ -1,8 +1,10 @@
 import palette from './palette';
 import rgba from './rgba';
 import mdTheme from './mdTheme';
+import { changeHtmlMetaColor, createNewStyleElement } from './dom';
 
 const VALID_THEME_TYPE = ['primary', 'accent', 'background', 'warn', 'hue-1', 'hue-2', 'hue-3'];
+const TYPE_REGEX = new RegExp('(' + VALID_THEME_TYPE.join('|').toUpperCase() + ')-(COLOR|CONTRAST)-?(A?\\d*)-?(\\d*\\.?\\d+)?', 'g');
 const DEFAULT_THEME_COLORS = {
   primary: 'indigo',
   accent: 'pink',
@@ -22,167 +24,174 @@ const DEFAULT_THEME_COLORS = {
   }
 };*/
 
-const createNewStyleElement = (style, name) => {
-  let head = document.head;
-  let styleId = 'md-theme-' + name;
-  let styleElement = head.querySelector('#' + styleId);
-
-  if (!styleElement) {
-    let newTag = document.createElement('style');
-
-    style = style.replace(/THEME_NAME/g, styleId);
-
-    newTag.type = 'text/css';
-    newTag.id = styleId;
-    newTag.textContent = style;
-
-    head.appendChild(newTag);
-  } else {
-    styleElement.textContent = style;
-  }
-};
-
-let registeredThemes = [];
-let registeredPrimaryColor = {};
+const registeredPrimaryColor = {};
+const injectedStyles = {};
 
 const parseStyle = (style, theme, name) => {
-  VALID_THEME_TYPE.forEach((type) => {
-    style = style.replace(RegExp('(' + type.toUpperCase() + ')-(COLOR|CONTRAST)-?(A?\\d*)-?(\\d*\\.?\\d+)?', 'g'), (match, paletteType, colorType, hue, opacity) => {
-      let color;
-      let colorVariant = +hue === 0 ? 500 : hue;
+  return style.replace(TYPE_REGEX, (match, type, colorType, hue, opacity) => {
+    let color;
+    let colorVariant = +hue === 0 ? 500 : hue;
 
-      if (theme[type]) {
-        if (typeof theme[type] === 'string') {
-          color = palette[theme[type]];
-        } else {
-          color = palette[theme[type].color] || palette[DEFAULT_THEME_COLORS[type]];
-          colorVariant = +hue === 0 ? theme[type].hue : hue;
-        }
+    type = type.toLowerCase();
+
+    if (theme[type]) {
+      if (typeof theme[type] === 'string') {
+        color = palette[theme[type]];
       } else {
-        color = palette[DEFAULT_THEME_COLORS[type]];
+        color = palette[theme[type].color] || palette[DEFAULT_THEME_COLORS[type]];
+        colorVariant = +hue === 0 ? theme[type].hue : hue;
       }
+    } else {
+      color = palette[DEFAULT_THEME_COLORS[type]];
+    }
 
-      if (colorType === 'COLOR') {
-        let isDefault = palette[theme[type]];
+    if (colorType === 'COLOR') {
+      let isDefault = palette[theme[type]];
 
-        if (!colorVariant && !isDefault) {
-          if (type === 'accent') {
-            colorVariant = 'A200';
-          } else if (type === 'background') {
-            colorVariant = 50;
-          }
-        }
-
-        if (type === 'primary') {
-          registeredPrimaryColor[name] = color[colorVariant];
-        }
-
-        if (opacity) {
-          return rgba(color[colorVariant], opacity);
-        }
-
-        return color[colorVariant];
-      }
-
-      let isDarkText = color.darkText.indexOf(colorVariant) >= 0;
-
-      if (theme[type] && typeof theme[type] !== 'string' && theme[type].textColor) {
-        if (theme[type].textColor === 'black') {
-          isDarkText = true;
-        } else if (theme[type].textColor === 'white') {
-          isDarkText = false;
+      if (!colorVariant && !isDefault) {
+        if (type === 'accent') {
+          colorVariant = 'A200';
+        } else if (type === 'background') {
+          colorVariant = 50;
         }
       }
 
-      if (isDarkText) {
-        if (opacity) {
-          return rgba('#000', opacity);
-        }
-
-        return 'rgba(0, 0, 0, .87)';
+      if (type === 'primary') {
+        registeredPrimaryColor[name] = color[colorVariant];
       }
 
       if (opacity) {
-        return rgba('#fff', opacity);
+        return rgba(color[colorVariant], opacity);
       }
 
-      return 'rgba(255, 255, 255, .87)';
-    });
-  });
+      return color[colorVariant];
+    }
 
-  return style;
+    let isDarkText = color.darkText.indexOf(colorVariant) >= 0;
+
+    if (theme[type] && typeof theme[type] !== 'string' && theme[type].textColor) {
+      if (theme[type].textColor === 'black') {
+        isDarkText = true;
+      } else if (theme[type].textColor === 'white') {
+        isDarkText = false;
+      }
+    }
+
+    if (isDarkText) {
+      if (opacity) {
+        return rgba('#000', opacity);
+      }
+
+      return 'rgba(0, 0, 0, .87)';
+    }
+
+    if (opacity) {
+      return rgba('#fff', opacity);
+    }
+
+    return 'rgba(255, 255, 255, .87)';
+  });
 };
 
-const registerTheme = (theme, name, themeStyles) => {
-  let parsedStyle = [];
+function warnNotFound(themeName) {
+  console.warn(`The theme '${themeName}' doesn't exists. You need to register` +
+    ' it first in order to use.');
+}
 
-  themeStyles.forEach((style) => {
-    parsedStyle.push(parseStyle(style, theme, name));
-  });
+function injectStyle(style, spec, name, styleId) {
+  if (createNewStyleElement) {
+    style = parseStyle(style, spec, name);
+    style = style.replace(/THEME_NAME/g, styleId);
 
-  createNewStyleElement(parsedStyle.join('\n'), name);
-};
-
-const registerAllThemes = (themes, themeStyles) => {
-  let themeNames = themes ? Object.keys(themes) : [];
-
-  themeNames.forEach((name) => {
-    registerTheme(themes[name], name, themeStyles);
-    registeredThemes.push(name);
-  });
-};
-
-const changeHtmlMetaColor = (color) => {
-  let themeColorElement = document.querySelector('meta[name="theme-color"]');
-
-  if (themeColorElement) {
-    themeColorElement.setAttribute('content', color);
-  } else {
-    themeColorElement = document.createElement('meta');
-    themeColorElement.setAttribute('name', 'theme-color');
-    themeColorElement.setAttribute('content', color);
-
-    document.head.appendChild(themeColorElement);
+    createNewStyleElement(style, styleId);
   }
-};
+}
 
 export default function install(Vue) {
-  Vue.material.registerPalette = function(name, spec) {
-    palette[name] = spec;
-  };
-
-  Vue.material.registerTheme = function(name, spec) {
-    let theme = {};
-
-    if (typeof name === 'string') {
-      theme[name] = spec;
-    } else {
-      theme = name;
-    }
-
-    registerAllThemes(theme, this.styles);
-  };
-
-  Vue.material.applyCurrentTheme = function(themeName) {
-    changeHtmlMetaColor(registeredPrimaryColor[themeName]);
-    document.body.classList.remove('md-theme-' + this.currentTheme);
-    document.body.classList.add('md-theme-' + themeName);
-    this.currentTheme = themeName;
-  };
-
-  Vue.material.setCurrentTheme = function(themeName) {
-    if (registeredThemes.indexOf(themeName) >= 0) {
-      this.applyCurrentTheme(themeName);
-    } else {
-      if (registeredThemes.indexOf('default') === -1) {
-        this.registerTheme('default', DEFAULT_THEME_COLORS);
-      } else {
-        console.warn(`The theme '${themeName}' doesn't exists. You need to register it first in order to use.`);
+  Vue.material = new Vue({
+    data: {
+      currentTheme: null,
+      inkRipple: true,
+      prefix: 'md-theme-',
+      styles: [],
+      themes: {
+        default: DEFAULT_THEME_COLORS
+      },
+      locale: {
+        startYear: 1900,
+        endYear: 2099,
+        dateFormat: 'YYYY-MM-DD',
+        days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        shortDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        shorterDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        shorterMonths: ['J', 'F', 'M', 'A', 'M', 'Ju', 'Ju', 'A', 'Se', 'O', 'N', 'D']
       }
+    },
+    watch: {
+      styles() {
+        this.refreshInjectedStyles();
+      }
+    },
+    methods: {
+      registerPalette(name, spec) {
+        palette[name] = spec;
+      },
+      useTheme(name) {
+        if (name in injectedStyles) {
+          return;
+        }
+        const spec = this.themes[name];
 
-      this.applyCurrentTheme('default');
+        if (!spec) {
+          return warnNotFound(name);
+        }
+
+        injectStyle(this.styles.join('\n'), spec, name, this.prefix + name);
+
+        return injectedStyles[name] = true;
+      },
+      refreshInjectedStyles() {
+        const styles = this.styles.join('\n');
+        const prefix = this.prefix;
+
+        Object.keys(injectedStyles).forEach((name) => {
+          const spec = this.themes[name];
+
+          injectStyle(styles, spec, name, prefix + name);
+        });
+      },
+      registerTheme(name, spec) {
+        if (typeof name === 'string') {
+          this.themes[name] = spec;
+        } else {
+          Object.keys(name).forEach((k) => this.themes[k] = name[k]);
+        }
+      },
+      setCurrentTheme(name) {
+        if (name === this.currentTheme) {
+          return;
+        }
+
+        const prefix = this.prefix;
+
+        this.useTheme(name);
+
+        if (changeHtmlMetaColor) {
+          changeHtmlMetaColor(
+            registeredPrimaryColor[name],
+            prefix + this.currentTheme,
+            prefix + name
+          );
+        }
+
+        this.currentTheme = name;
+      }
     }
-  };
+  });
 
   Vue.component('md-theme', mdTheme);
+
+  Vue.prototype.$material = Vue.material;
 }

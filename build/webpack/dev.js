@@ -12,7 +12,7 @@ Object.keys(baseWebpackConfig.entry).forEach((name) => {
 });
 
 export default merge(baseWebpackConfig, {
-  devtool: '#eval-source-map',
+  devtool: '#inner-source-map',
   module: {
     rules: [
       {
