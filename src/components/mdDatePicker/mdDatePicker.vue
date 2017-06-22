@@ -105,7 +105,8 @@
   </div>
 </template>
 
-<style lang="scss" src="./mdDatePicker.scss"></style>
+<style lang="scss" src="./mdDatePicker.scss">
+</style>
 
 <script>
   import theme from '../../core/components/mdTheme/mixin';
@@ -132,7 +133,10 @@
       value: [String, Date],
       id: String,
       name: String,
-      disabled: Boolean,
+      disabled: {
+        type: Boolean,
+        default: false
+      },
       required: Boolean,
       placeholder: String,
       mdOpenOnFocus: Boolean
